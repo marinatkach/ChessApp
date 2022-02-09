@@ -10,7 +10,7 @@ import com.example.chessapp.storage.model.Puzzles;
 public class PuzzlesTable extends DBResourceManager<Puzzles> {
 
     public PuzzlesTable(Context activity, String dbName) {
-        super(activity, dbName, "puzzles", "CREATE TABLE puzzles ( _id INTEGER PRIMARY KEY AUTOINCREMENT,  name TEXT NOT NULL,  solution TEXT NOT NULL,  clubName TEXT NOT NULL,  isPublic INTEGER NOT NULL,  image TEXT NOT NULL )\n");
+        super(activity, dbName, "puzzles", "CREATE TABLE puzzles ( _id INTEGER PRIMARY KEY AUTOINCREMENT,  name TEXT NOT NULL,  solution TEXT NOT NULL,  clubName TEXT,  isPublic INTEGER NOT NULL,  image TEXT NOT NULL )\n");
     }
 
     @Override

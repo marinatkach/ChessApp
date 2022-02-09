@@ -1,4 +1,4 @@
-package com.example.chessapp.ui.home;
+package com.example.chessapp.ui.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,20 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.chessapp.databinding.FragmentHistoryBinding;
 import com.example.chessapp.databinding.FragmentHomeBinding;
 
-public class HomeFragment extends Fragment {
+public class HistoryFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentHistoryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =  new ViewModelProvider(this).get(HomeViewModel.class);
+        HistoryViewModel historyViewModel =  new ViewModelProvider(this).get(HistoryViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.helloUpText;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+//        final TextView textView = binding.helloUpText;
+//        historyViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

@@ -9,12 +9,42 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_map"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_map" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_clubs"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_clubs" />
+        <item
+            android:id="@+id/nav_cafes"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_cafes" />
+        <item
+            android:id="@+id/nav_outdoors"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_outdoors" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_history" />
+        <item
+            android:id="@+id/nav_puzzles"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_puzzles" />
+        <item
+            android:id="@+id/nav_gps"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_gps" />
+        <item
+            android:id="@+id/nav_bonus"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_bonus" />
+        <item
+            android:id="@+id/nav_admin"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_admin" />
+
+
     </group>
 </menu>

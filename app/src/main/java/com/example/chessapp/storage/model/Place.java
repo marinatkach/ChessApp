@@ -9,11 +9,30 @@ public class Place {
     public Double latitude;
     public String category;
     public String logo;
+    public boolean isVisited;
+
+    public static final String CATEGORY_CAFE = "cafe";
+    public static final String CATEGORY_CLUB = "club";
+    public static final String CATEGORY_OUTDOOR = "outdoor";
+
 
     public Place(){
     }
 
-    public Place(int id, String clubName, String address, String link, Double longitude, Double latitude, String category, String logo) {
+    public Place(String clubName, String address, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
+        this.id = -1;
+        this.clubName = clubName;
+        this.address = address;
+        this.link = link;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.category = category;
+        this.logo = logo;
+        this.isVisited = isVisited;
+    }
+
+
+    public Place(int id, String clubName, String address, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
         this.id = id;
         this.clubName = clubName;
         this.address = address;
@@ -22,17 +41,7 @@ public class Place {
         this.latitude = latitude;
         this.category = category;
         this.logo = logo;
-    }
-
-    public Place(String clubName, String address, String link, Double longitude, Double latitude, String category, String logo) {
-        this.clubName = clubName;
-        this.address = address;
-        this.link = link;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.category = category;
-        this.logo = logo;
-        id = -1;
+        this.isVisited = isVisited;
     }
 
     @Override

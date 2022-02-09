@@ -20,22 +20,23 @@ public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements R
     protected abstract T createDataFromCursor(Cursor cursor);
     protected abstract ContentValues createContextValuesFromObj(T obj);
 
+    public String getTableName() {
+        return tableName;
+    }
 
     public DBResourceManager(Context activity, String dbName, String tableName, String SQL) {
         super(activity, dbName, null, 1);
         this.dbName = dbName;
         this.tableName = tableName;
         this.sql = SQL;
+        db = this.getWritableDatabase();
+
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        try {
-            db.execSQL(sql);
-        } catch (Exception ex) {
-            Log.e("gehtfxs", ex.getMessage());
-        }
+        db.execSQL(sql);
     }
 
     @Override
