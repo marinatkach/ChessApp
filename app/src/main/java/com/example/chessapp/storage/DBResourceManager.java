@@ -30,9 +30,24 @@ public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements R
         this.tableName = tableName;
         this.sql = SQL;
         db = this.getWritableDatabase();
+        if(!isExists()) recreate();
 
     }
 
+    @Override
+    public boolean isExists() {
+        Cursor cursor = null;
+        try {
+            cursor = db.query("sqlite_master", new String[]{"name"}, String.format("type='table' AND name='%s'", tableName), null, null, null, null);
+            return cursor.getCount() > 0 ;
+        } catch (Exception ex) {
+           throw ex;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -126,31 +141,9 @@ public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements R
 
     @Override
     public void recreate() {
+        Log.w("DB","recreate table " + tableName);
         onUpgrade(db, 0, 1);
     }
 
-    //
-//    private Datensatz erzeugeDatensatz(Cursor cursor) {
-//        Datensatz ds = new Datensatz();
-//        ds.id = cursor.getLong(0);
-//        ds.clubname = cursor.getString(1);
-//        ds.adresse = cursor.getString(2);
-//        ds.link = cursor.getString(3);
-//        ds.longitude = cursor.getDouble(4);
-//        ds.latitude = cursor.getDouble(5);
-//        ds.kat = cursor.getString(6);
-//        return ds;
-//    }
-//
-//    private ContentValues erzeugeDatenObjekt(Datensatz datensatz) {
-//        ContentValues daten = new ContentValues();
-//        daten.put("clubname", datensatz.clubname);
-//        daten.put("adresse", datensatz.adresse);
-//        daten.put("link", datensatz.link);
-//        daten.put("longitude", datensatz.longitude);
-//        daten.put("latitude", datensatz.latitude);
-//        daten.put("kat", datensatz.kat);
-//        return daten;
-//    }
 }
 

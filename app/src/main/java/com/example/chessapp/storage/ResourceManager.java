@@ -11,4 +11,5 @@ public interface ResourceManager<T> {
     void clear(); // delete all records in table
     void recreate();  // drop table and create new
     T update(T obj);
+    boolean isExists();
 }
