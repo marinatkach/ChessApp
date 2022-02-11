@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:elevation="8dp"
+    android:foregroundTint="#EA0C0C">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/gameNameTextView"
+            android:layout_width="211dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Schachklub Germering e.V."
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/placeInfoText"
+            android:layout_width="355dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="20dp"
+            android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
+            app:layout_constraintEnd_toEndOf="@+id/gameNameTextView"
+            app:layout_constraintStart_toStartOf="@+id/gameNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/gameImage" />
+
+        <TextView
+            android:id="@+id/cardDescrLinkTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="www.stackoverflow.com"
+            app:layout_constraintEnd_toEndOf="@+id/gameNameTextView"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="@+id/gameNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/gameNameTextView" />
+
+        <ImageView
+            android:id="@+id/gameImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/gameNameTextView"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="@+id/gameNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/cardDescrLinkTextView"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Puzzles"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/placeInfoText"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/placeInfoText"
+            app:layout_constraintTop_toBottomOf="@+id/placeInfoText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

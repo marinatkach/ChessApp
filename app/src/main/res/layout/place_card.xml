@@ -10,36 +10,38 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="209dp"
-            android:layout_height="40dp"
+            android:id="@+id/gameNameTextView"
+            android:layout_width="211dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:text="München"
-            android:textAlignment="center"
-            android:textSize="24sp"
+            android:text="Schachklub Germering e.V."
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView7"
+            app:layout_constraintEnd_toStartOf="@+id/placeDiistanceTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/placeDiistanceTextView"
             android:layout_width="120dp"
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
-            android:background="#7DE645"
+            android:background="#4CAF50"
             android:gravity="center"
             android:text="0,8  km"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintBottom_toBottomOf="@+id/gameNameTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView6" />
+            app:layout_constraintTop_toTopOf="@+id/gameNameTextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

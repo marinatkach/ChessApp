@@ -4,6 +4,7 @@ public class Place {
     public int id;
     public String clubName;
     public String address;
+    public String info;
     public String link;
     public Double longitude;
     public Double latitude;
@@ -19,7 +20,7 @@ public class Place {
     public Place(){
     }
 
-    public Place(String clubName, String address, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
+    public Place(String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
         this.id = -1;
         this.clubName = clubName;
         this.address = address;
@@ -29,10 +30,11 @@ public class Place {
         this.category = category;
         this.logo = logo;
         this.isVisited = isVisited;
+        this.info = info;
     }
 
 
-    public Place(int id, String clubName, String address, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
+    public Place(int id, String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
         this.id = id;
         this.clubName = clubName;
         this.address = address;
@@ -42,6 +44,7 @@ public class Place {
         this.category = category;
         this.logo = logo;
         this.isVisited = isVisited;
+        this.info = info;
     }
 
     @Override

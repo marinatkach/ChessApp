@@ -19,19 +19,19 @@
 
     <fragment
         android:id="@+id/nav_clubs"
-        android:name="com.example.chessapp.ui.home.HomeFragment"
+        android:name="com.example.chessapp.ui.placeslist.clubs.PlacesListFragment"
         android:label="@string/menu_clubs"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_places_list" />
     <fragment
         android:id="@+id/nav_cafes"
-        android:name="com.example.chessapp.ui.home.HomeFragment"
+        android:name="com.example.chessapp.ui.placeslist.cafes.PlacesListFragment"
         android:label="@string/menu_cafes"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_places_list" />
     <fragment
         android:id="@+id/nav_outdoors"
-        android:name="com.example.chessapp.ui.home.HomeFragment"
+        android:name="com.example.chessapp.ui.placeslist.outdoors.PlacesListFragment"
         android:label="@string/menu_outdoors"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_places_list" />
     <fragment
         android:id="@+id/nav_history"
         android:name="com.example.chessapp.ui.history.HistoryFragment"
