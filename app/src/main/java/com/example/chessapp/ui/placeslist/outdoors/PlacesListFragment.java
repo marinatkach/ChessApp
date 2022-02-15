@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chessapp.Application;
+import com.example.chessapp.R;
 import com.example.chessapp.databinding.FragmentPlacesListBinding;
 import com.example.chessapp.storage.model.Place;
 import com.example.chessapp.ui.placeslist.PlaceCardAdapter;
@@ -37,7 +38,7 @@ public class PlacesListFragment extends Fragment {
                 .collect(Collectors.toList());
 
         RecyclerView placesList = binding.placesList;
-        PlaceCardAdapter adapter = new PlaceCardAdapter(placeList);
+        PlaceCardAdapter adapter = new PlaceCardAdapter(placeList,  R.id.action_nav_outdoors_to_place_description);
         placesList.setAdapter(adapter);
         placesList.setLayoutManager(new LinearLayoutManager(getContext()));
         return root;

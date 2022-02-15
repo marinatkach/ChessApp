@@ -21,17 +21,29 @@
         android:id="@+id/nav_clubs"
         android:name="com.example.chessapp.ui.placeslist.clubs.PlacesListFragment"
         android:label="@string/menu_clubs"
-        tools:layout="@layout/fragment_places_list" />
+        tools:layout="@layout/fragment_places_list" >
+        <action
+            android:id="@+id/action_nav_clubs_to_place_description"
+            app:destination="@id/place_description" />
+    </fragment>
     <fragment
         android:id="@+id/nav_cafes"
         android:name="com.example.chessapp.ui.placeslist.cafes.PlacesListFragment"
         android:label="@string/menu_cafes"
-        tools:layout="@layout/fragment_places_list" />
+        tools:layout="@layout/fragment_places_list" >
+        <action
+            android:id="@+id/action_nav_cafes_to_place_description"
+            app:destination="@id/place_description" />
+    </fragment>
     <fragment
         android:id="@+id/nav_outdoors"
         android:name="com.example.chessapp.ui.placeslist.outdoors.PlacesListFragment"
         android:label="@string/menu_outdoors"
-        tools:layout="@layout/fragment_places_list" />
+        tools:layout="@layout/fragment_places_list" >
+        <action
+            android:id="@+id/action_nav_outdoors_to_place_description"
+            app:destination="@id/place_description" />
+    </fragment>
     <fragment
         android:id="@+id/nav_history"
         android:name="com.example.chessapp.ui.history.HistoryFragment"
@@ -57,5 +69,11 @@
         android:name="com.example.chessapp.ui.home.HomeFragment"
         android:label="@string/menu_admin"
         tools:layout="@layout/fragment_home" />
+
+    <fragment android:id="@+id/place_description"
+        android:name="com.example.chessapp.ui.placedesc.PlaceDescriptionFragment"
+        android:label="@string/menu_place_description"
+        tools:layout="@layout/fragment_place_desc"
+        />
 
 </navigation>

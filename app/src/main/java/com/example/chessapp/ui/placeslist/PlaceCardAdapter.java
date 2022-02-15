@@ -1,12 +1,14 @@
 package com.example.chessapp.ui.placeslist;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chessapp.R;
@@ -17,9 +19,11 @@ import java.util.List;
 public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.ViewHolder> {
 
     private List<Place> places;
+    private final int onClickNavigationAction;
 
-    public PlaceCardAdapter(List<Place> place) {
+    public PlaceCardAdapter(List<Place> place, int onClickNavigationAction) {
         this.places = place;
+        this.onClickNavigationAction = onClickNavigationAction;
     }
 
     @NonNull
@@ -40,6 +44,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get the data model based on position
         Place contact = places.get(position);
+        holder.addOnClickEvent(contact.id);
 
         // Set item views based on your views and data model
         TextView placeName = holder.nameTextView;
@@ -47,6 +52,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
         placeName.setText(contact.clubName);
         // todo: add distance in card
         placeDistance.setText("12.3 KM");
+
     }
 
     @Override
@@ -55,7 +61,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView nameTextView;
@@ -68,8 +74,18 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            nameTextView = (TextView) itemView.findViewById(R.id.gameNameTextView);
+            nameTextView = (TextView) itemView.findViewById(R.id.clubNameTextView);
             distanceTextView = (TextView) itemView.findViewById(R.id.placeDiistanceTextView);
         }
+
+
+        public void addOnClickEvent(int placeId) {
+            itemView.setOnClickListener( (v) -> {
+                Bundle bundle = new Bundle();
+                bundle.putInt("placeId", placeId);
+                Navigation.findNavController(v).navigate(onClickNavigationAction, bundle);
+            });
+        }
+
     }
 }

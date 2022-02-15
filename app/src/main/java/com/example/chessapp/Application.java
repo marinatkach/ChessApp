@@ -49,6 +49,8 @@ public class Application {
                             new Puzzles("puzzle2", "solution2", null, true, "im2.jpeg"),
                             new Puzzles("puzzle3", "solution3", "Schachklub Gräfelfing", false, "im3.jpeg"),
                             new Puzzles("puzzle4", "solution4", "Schachklub Germering e.V.", false, "im4.jpeg"),
+                            new Puzzles("puzzle4", "solution4", "Germering e.V.", false, "im4.jpeg"),
+                            new Puzzles("puzzle4", "solution4", "Germering e.V.", false, "im4.jpeg"),
                     };
 
             Arrays.stream(arr).forEach(puzzlesTable::push);

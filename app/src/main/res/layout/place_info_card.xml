@@ -14,7 +14,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/gameNameTextView"
+            android:id="@+id/clubNameDescriptionTextView"
             android:layout_width="211dp"
             android:layout_height="0dp"
             android:gravity="center"
@@ -32,9 +32,9 @@
             android:layout_height="89dp"
             android:layout_marginTop="20dp"
             android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
-            app:layout_constraintEnd_toEndOf="@+id/gameNameTextView"
-            app:layout_constraintStart_toStartOf="@+id/gameNameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/gameImage" />
+            app:layout_constraintEnd_toEndOf="@+id/clubNameDescriptionTextView"
+            app:layout_constraintStart_toStartOf="@+id/clubNameDescriptionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/clubImage" />
 
         <TextView
             android:id="@+id/cardDescrLinkTextView"
@@ -42,19 +42,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="www.stackoverflow.com"
-            app:layout_constraintEnd_toEndOf="@+id/gameNameTextView"
+            app:layout_constraintEnd_toEndOf="@+id/clubNameDescriptionTextView"
             app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="@+id/gameNameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/gameNameTextView" />
+            app:layout_constraintStart_toStartOf="@+id/clubNameDescriptionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/clubNameDescriptionTextView" />
 
         <ImageView
-            android:id="@+id/gameImage"
+            android:id="@+id/clubImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/gameNameTextView"
+            app:layout_constraintEnd_toEndOf="@+id/clubNameDescriptionTextView"
             app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="@+id/gameNameTextView"
+            app:layout_constraintStart_toStartOf="@+id/clubNameDescriptionTextView"
             app:layout_constraintTop_toBottomOf="@+id/cardDescrLinkTextView"
             tools:srcCompat="@tools:sample/avatars" />
 
