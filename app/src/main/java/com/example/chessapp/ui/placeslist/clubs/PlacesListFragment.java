@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chessapp.Application;
 import com.example.chessapp.R;
-import com.example.chessapp.databinding.FragmentPlacesListBinding;
+import com.example.chessapp.databinding.FragmentEmptyRecycleViewBinding;
 import com.example.chessapp.storage.model.Place;
 import com.example.chessapp.ui.placeslist.PlaceCardAdapter;
 import com.example.chessapp.ui.placeslist.PlacesListViewModel;
@@ -23,12 +23,12 @@ import java.util.stream.Collectors;
 
 public class PlacesListFragment extends Fragment {
 
-    private FragmentPlacesListBinding binding;
+    private FragmentEmptyRecycleViewBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         PlacesListViewModel homeViewModel =  new ViewModelProvider(this).get(PlacesListViewModel.class);
 
-        binding = FragmentPlacesListBinding.inflate(inflater, container, false);
+        binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         List<Place> placeList = Application
@@ -37,7 +37,7 @@ public class PlacesListFragment extends Fragment {
                 .filter(place -> place.category.equals(Place.CATEGORY_CLUB))
                 .collect(Collectors.toList());
 
-        RecyclerView placesList = binding.placesList;
+        RecyclerView placesList = binding.recycleView;
         PlaceCardAdapter adapter = new PlaceCardAdapter(placeList,  R.id.action_nav_clubs_to_place_description);
         placesList.setAdapter(adapter);
         placesList.setLayoutManager(new LinearLayoutManager(getContext()));

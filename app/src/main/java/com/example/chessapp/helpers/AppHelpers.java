@@ -29,4 +29,7 @@ public class AppHelpers {
         return res.toString();
     }
 
+    public static String createPlayerText(String player1, String player2, int year){
+        return String.format("%s - %s, %s", player1, player2, year);
+    }
 }

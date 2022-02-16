@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authors"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
@@ -31,7 +32,7 @@
             android:layout_width="357dp"
             android:layout_height="312dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,10 +42,10 @@
 
         <Button
             android:id="@+id/gameBntShowAnswer"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:text="@string/bnt_solution"
+            android:text="@string/bnt_open_solution"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +64,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gameBntShowAnswer" />
+
+        <TextView
+            android:id="@+id/gamePlayerNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ivanov - Petrov, 2010"
+            app:layout_constraintBottom_toTopOf="@+id/gameImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gameNameTextView"
+            app:layout_constraintVertical_bias="0.69" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

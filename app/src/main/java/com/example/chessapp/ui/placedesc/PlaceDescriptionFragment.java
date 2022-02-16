@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chessapp.Application;
-import com.example.chessapp.databinding.FragmentPlaceDescBinding;
+import com.example.chessapp.databinding.FragmentEmptyRecycleViewBinding;
 import com.example.chessapp.storage.model.Place;
-import com.example.chessapp.storage.model.Puzzles;
+import com.example.chessapp.storage.model.Puzzle;
 import com.example.chessapp.ui.adaptes.PlaceInfoCardAdapter;
 
 import java.util.List;
@@ -24,20 +24,20 @@ import java.util.stream.Collectors;
 
 public class PlaceDescriptionFragment extends Fragment {
 
-    private FragmentPlaceDescBinding binding;
+    private FragmentEmptyRecycleViewBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         PlaceDescriptionModel historyViewModel =  new ViewModelProvider(this).get(PlaceDescriptionModel.class);
 
         Integer placeId = requireArguments().getInt("placeId");
 
-        binding = FragmentPlaceDescBinding.inflate(inflater, container, false);
+        binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
 
         View root = binding.getRoot();
 
         Place place = Objects.requireNonNull(Application.placeTable.get(placeId));
 
-        List<Puzzles> puzzles = Application.puzzlesTable.all().stream()
+        List<Puzzle> puzzles = Application.puzzlesTable.all().stream()
                 .filter(it -> it.clubName != null)
                 .filter(it -> it.clubName.equals(place.clubName))
                 .collect(Collectors.toList());;
@@ -45,7 +45,7 @@ public class PlaceDescriptionFragment extends Fragment {
 
         PlaceInfoCardAdapter placeInfoCardAdapter = new PlaceInfoCardAdapter(place, puzzles);
 
-        RecyclerView recyclerView = binding.placeDescrRecyclesView;
+        RecyclerView recyclerView = binding.recycleView;
         recyclerView.setAdapter(placeInfoCardAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

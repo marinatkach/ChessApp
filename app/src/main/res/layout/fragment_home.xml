@@ -41,7 +41,7 @@
     <TextView
         android:id="@+id/hello_center_text"
         android:layout_width="0dp"
-        android:layout_height="88dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/text_home_center"
         app:layout_constraintEnd_toEndOf="@+id/hello_up_text"

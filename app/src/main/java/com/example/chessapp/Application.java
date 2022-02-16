@@ -3,13 +3,13 @@ package com.example.chessapp;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.chessapp.helpers.AppHelpers;
 import com.example.chessapp.storage.DBResourceManager;
 import com.example.chessapp.storage.PlaceTable;
 import com.example.chessapp.storage.PuzzlesTable;
-import com.example.chessapp.storage.ResourceManager;
 import com.example.chessapp.storage.UserStateTable;
 import com.example.chessapp.storage.model.Place;
-import com.example.chessapp.storage.model.Puzzles;
+import com.example.chessapp.storage.model.Puzzle;
 import com.example.chessapp.storage.model.UserState;
 
 import java.util.Arrays;
@@ -43,14 +43,15 @@ public class Application {
 
     private static void fillDB(){
         if(puzzlesTable.all().isEmpty()){
-            Puzzles[] arr = new Puzzles[]
+            Puzzle[] arr = new Puzzle[]
                     {
-                            new Puzzles("puzzle1", "solution1", null, true, "im1.jpeg"),
-                            new Puzzles("puzzle2", "solution2", null, true, "im2.jpeg"),
-                            new Puzzles("puzzle3", "solution3", "Schachklub Gräfelfing", false, "im3.jpeg"),
-                            new Puzzles("puzzle4", "solution4", "Schachklub Germering e.V.", false, "im4.jpeg"),
-                            new Puzzles("puzzle4", "solution4", "Germering e.V.", false, "im4.jpeg"),
-                            new Puzzles("puzzle4", "solution4", "Germering e.V.", false, "im4.jpeg"),
+                            new Puzzle("puzzle6", "solution1", null,  "N - N", true, "im1.jpeg"),
+                            new Puzzle("puzzle1", "solution1", null,  AppHelpers.createPlayerText("Ivanov", "Petrov", 2010), true, "im1.jpeg"),
+                            new Puzzle("puzzle2", "solution2", null, AppHelpers.createPlayerText("Vasilenko", "Petrov", 2012) , true, "im2.jpeg"),
+                            new Puzzle("puzzle3", "solution3", "Schachklub Gräfelfing", AppHelpers.createPlayerText("Kosparov", "Petrov", 3010) ,  false, "im3.jpeg"),
+                            new Puzzle("Etude 1", "solution4", "Schachklub Germering e.V.", AppHelpers.createPlayerText("Ivanov", "Aleksandrovskiy", 2012) ,  false, "im4.jpeg"),
+                            new Puzzle("Etude 10", "solution4", "Germering e.V.", AppHelpers.createPlayerText("Ivanov", "Robin", 2011) ,  false, "im4.jpeg"),
+                            new Puzzle("Etude 12", "solution4", "Germering e.V.", AppHelpers.createPlayerText("Batman", "Petrov", 2000) ,  false, "im4.jpeg"),
                     };
 
             Arrays.stream(arr).forEach(puzzlesTable::push);

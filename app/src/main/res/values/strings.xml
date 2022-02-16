@@ -21,7 +21,22 @@
     <string name="menu_admin">Admin</string>
     <string name="menu_place_description">Place Info</string>
 
-    <string name="bnt_solution">Solution</string>
+    <string name="bnt_open_solution">Solution</string>
+    <string name="bnt_hide_solution">Hide</string>
+
+
+
+
+    <string name="puzzles_head_information">PUZZLES! Click Open Zoom Meetings on the dialog shown by your browser. If you don`t see a dialog, click Launch Zoom below.</string>
+    <string name="bonus_head_information">BONUS! Click Open Zoom Meetings on the dialog shown by your browser. If you don`t see a dialog, click Launch Zoom below.</string>
+    <string name="admin_head_information">ADMIN! Click Open Zoom Meetings on the dialog shown by your browser. </string>
+
+
+    <string name="bnt_admin_show_clubs">All Clubs</string>
+    <string name="bnt_admin_show_outdoors">All Outdoors</string>
+    <string name="bnt_admin_show_cafes">All Cafes</string>
+    <string name="bnt_admin_reset_all">Reset All</string>
+    <string name="bnt_admin_reset_radius">R = 100 km</string>
 
 
 

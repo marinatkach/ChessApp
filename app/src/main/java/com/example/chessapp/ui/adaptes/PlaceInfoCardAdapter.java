@@ -14,16 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chessapp.R;
 import com.example.chessapp.helpers.AppHelpers;
 import com.example.chessapp.storage.model.Place;
-import com.example.chessapp.storage.model.Puzzles;
+import com.example.chessapp.storage.model.Puzzle;
 
 import java.util.List;
 
 public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Place place;
-    private List<Puzzles> puzzles;
+    private List<Puzzle> puzzles;
 
-    public PlaceInfoCardAdapter(Place place,  List<Puzzles> puzzles) {
+    public PlaceInfoCardAdapter(Place place,  List<Puzzle> puzzles) {
         this.place = place;
         this.puzzles = puzzles;
     }
@@ -56,21 +56,8 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private void onBindGameViewHolder(GameViewHolder holder, int position){
         int fixPosition = position - 1 ;
-        Puzzles puzzle = this.puzzles.get(fixPosition);
-
-        // Set item views based on your views and data model
-        TextView gameNameTextView = holder.gameNameTextView;
-        ImageView gameImage = holder.gameImage;
-        TextView  gameAnswerTextView = holder.gameAnswerTextView;
-        Button gameBntShowAnswer = holder.gameBntShowAnswer;
-
-        gameNameTextView.setText(puzzle.name);
-
-        AppHelpers.setImageOrDefault(gameImage, puzzle.image);
-
-        gameAnswerTextView.setText(AppHelpers.hideString(puzzle.solution));
-
-        gameBntShowAnswer.setOnClickListener((view) -> gameAnswerTextView.setText(puzzle.solution));
+        Puzzle puzzle = this.puzzles.get(fixPosition);
+        GameViewHolder.onBindGameViewHolder(holder, puzzle);
     }
 
     private void onBindPlaceInfoViewHolder(PlaceViewHolder holder, int position){
@@ -87,7 +74,14 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         cardDescriptionLink.setText(place.link);
         placeInfoText.setText(place.info);
 
-        // todo : if puzzles count == 0 -> remove (hide) puzzles textview
+        if(puzzles.isEmpty())
+        {
+            holder.puzzlesText.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.puzzlesText.setVisibility(View.VISIBLE);
+        }
 
         AppHelpers.setImageOrDefault(clubImage, place.logo);
     }
@@ -117,6 +111,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         public TextView clubNameDescriptionTextView;
         public TextView cardDescriptionLink;
         public TextView placeInfoText;
+        public TextView puzzlesText;
         public ImageView clubImage;
 
 
@@ -131,30 +126,9 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
            cardDescriptionLink = (TextView) itemView.findViewById(R.id.cardDescrLinkTextView);
            placeInfoText = (TextView) itemView.findViewById(R.id.placeInfoText);
            clubImage = (ImageView) itemView.findViewById(R.id.clubImage);
+           puzzlesText = (TextView) itemView.findViewById(R.id.placeInfoPuzzlesTextView);
 
         }
     }
 
-    public class GameViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
-        TextView gameNameTextView;
-        ImageView gameImage;
-        TextView  gameAnswerTextView;
-        Button gameBntShowAnswer;
-
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
-        public GameViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
-            super(itemView);
-
-            this.gameNameTextView = (TextView) itemView.findViewById(R.id.gameNameTextView);
-            this.gameImage = (ImageView) itemView.findViewById(R.id.gameImage);
-            this.gameAnswerTextView = (TextView) itemView.findViewById(R.id.gameAnswerTextView);
-            this.gameBntShowAnswer = (Button) itemView.findViewById(R.id.gameBntShowAnswer);
-
-        }
-    }
 }
