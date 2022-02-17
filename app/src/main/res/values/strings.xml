@@ -37,6 +37,14 @@
     <string name="bnt_admin_show_cafes">All Cafes</string>
     <string name="bnt_admin_reset_all">Reset All</string>
     <string name="bnt_admin_reset_radius">R = 100 km</string>
+    <string name="bnt_admin_logout">Logout</string>
+    <string name="bnt_admin_login">Login</string>
+    <string name="admin_you_are_admin">You are Admin!</string>
+    <string name="admin_you_are_user">You have not admin right!</string>
+
+
+    <string name="bnt_gps_on">ON</string>
+    <string name="bnt_gps_off">OFF</string>
 
 
 
@@ -45,5 +53,6 @@
     <string name="text_home_up">Hello,\n you are welcomed by the app "chess places GO"</string>
     <string name="text_home_center">The app will show you all the chess places in Munich and its surroundings (clubs, cafes, outdoor places). The app will help you find a chess club that suits your level of play. You can also enjoy solving chess problems from the best games of Munich chess players! Visit chess places and unlock the bonus!</string>
     <string name="text_home_bottom">Designed by Irina Krivoborodova in 2022</string>
+    <string name="wrong_password">Wrong Password</string>
 
 </resources>

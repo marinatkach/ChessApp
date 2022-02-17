@@ -53,11 +53,13 @@ public class Place {
                 "id=" + id +
                 ", clubName='" + clubName + '\'' +
                 ", address='" + address + '\'' +
+                ", info='" + info + '\'' +
                 ", link='" + link + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 ", category='" + category + '\'' +
                 ", logo='" + logo + '\'' +
+                ", isVisited=" + isVisited +
                 '}';
     }
 }

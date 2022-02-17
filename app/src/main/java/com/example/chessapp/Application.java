@@ -13,12 +13,18 @@ import com.example.chessapp.storage.model.Puzzle;
 import com.example.chessapp.storage.model.UserState;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Application {
     public static PlaceTable placeTable = null;
     public static PuzzlesTable puzzlesTable = null;
     public static UserStateTable stateTable = null;
     public static final String DB_NAME = "db";
+
+
+    public static UserState getCurrentUserState(){
+        return stateTable.all().get(0);
+    }
 
 
     // todo: if db not exists -> recreate()

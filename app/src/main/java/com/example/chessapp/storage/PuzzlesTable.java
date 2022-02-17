@@ -6,6 +6,9 @@ import android.database.Cursor;
 
 import com.example.chessapp.storage.model.Puzzle;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PuzzlesTable extends DBResourceManager<Puzzle> {
 
     public PuzzlesTable(Context activity, String dbName) {
@@ -17,6 +20,9 @@ public class PuzzlesTable extends DBResourceManager<Puzzle> {
         return obj.id;
     }
 
+    public List<Puzzle> findPuzzlesByClubName(String clubName){
+        return all().stream().filter(it -> it.clubName.equals(clubName)).collect(Collectors.toList());
+    }
 
 
     @Override

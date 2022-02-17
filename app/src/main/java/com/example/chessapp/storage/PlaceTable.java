@@ -6,6 +6,9 @@ import android.database.Cursor;
 
 import com.example.chessapp.storage.model.Place;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PlaceTable extends DBResourceManager<Place> {
 
 
@@ -18,6 +21,13 @@ public class PlaceTable extends DBResourceManager<Place> {
         return obj.id;
     }
 
+    public List<Place> getPlacesByVisitedState(boolean isVisited){
+        return all().stream().filter(it -> it.isVisited == isVisited).collect(Collectors.toList());
+    }
+
+    public List<Place> getPlacesByCategory(String category){
+        return all().stream().filter(it -> it.category.equals(category)).collect(Collectors.toList());
+    }
     @Override
     protected Place createDataFromCursor(Cursor cursor) {
         Place place = new Place();

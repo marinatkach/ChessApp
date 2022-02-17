@@ -8,9 +8,11 @@
 
     <TextView
         android:id="@+id/adminHeadInformation"
-        android:layout_width="229dp"
-        android:layout_height="23dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/admin_head_information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,62 +45,70 @@
         android:id="@+id/adminShowAllClubsBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/admin_btn_color"
         android:text="@string/bnt_admin_show_clubs"
+        app:layout_constraintBottom_toTopOf="@+id/adminShowAllCafesBtn"
         app:layout_constraintEnd_toEndOf="@+id/adminShowAllCafesBtn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/adminShowAllCafesBtn"
-        tools:layout_editor_absoluteY="331dp" />
+        app:layout_constraintStart_toStartOf="@+id/adminShowAllCafesBtn" />
 
     <Button
         android:id="@+id/adminShowAllOutdoorsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/admin_btn_color"
         android:text="@string/bnt_admin_show_outdoors"
+        app:layout_constraintBottom_toTopOf="@+id/adminResetAllBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminShowAllCafesBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/adminShowByRadiusBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/admin_btn_color"
         android:text="@string/bnt_admin_reset_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/adminShowAllOutdoorsBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/adminShowAllOutdoorsBtn"
-        app:layout_constraintTop_toBottomOf="@+id/adminResetAllBtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/adminShowAllOutdoorsBtn" />
 
     <Button
         android:id="@+id/adminResetAllBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/admin_btn_color"
         android:text="@string/bnt_admin_reset_all"
+        app:layout_constraintBottom_toTopOf="@+id/adminShowByRadiusBtn"
         app:layout_constraintEnd_toEndOf="@+id/adminShowAllOutdoorsBtn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/adminShowAllOutdoorsBtn"
-        app:layout_constraintTop_toBottomOf="@+id/adminShowAllOutdoorsBtn" />
+        app:layout_constraintStart_toStartOf="@+id/adminShowAllOutdoorsBtn" />
 
     <Button
         android:id="@+id/adminShowAllCafesBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/admin_btn_color"
         android:text="@string/bnt_admin_show_cafes"
+        app:layout_constraintBottom_toTopOf="@+id/adminShowAllOutdoorsBtn"
         app:layout_constraintEnd_toEndOf="@+id/adminShowAllOutdoorsBtn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/adminShowAllOutdoorsBtn"
-        app:layout_constraintTop_toBottomOf="@+id/adminShowAllClubsBtn" />
+        app:layout_constraintStart_toStartOf="@+id/adminShowAllOutdoorsBtn" />
+
+    <Button
+        android:id="@+id/adminLoginOutBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="@+id/adminShowAllClubsBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/adminShowAllClubsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/adminAccessTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

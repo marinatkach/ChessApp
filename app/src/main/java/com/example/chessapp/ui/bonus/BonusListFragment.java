@@ -30,11 +30,16 @@ public class BonusListFragment extends Fragment {
         binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        List<String> visitedPlaces = Application.placeTable.getPlacesByVisitedState(true)
+                .stream().map(it-> it.clubName).collect(Collectors.toList());
+
         List<Puzzle> puzzles = Application.puzzlesTable
                 .all()
                 .stream()
                 .filter(it -> !it.isPublic)
+                .filter(it -> visitedPlaces.contains(it.clubName))
                 .collect(Collectors.toList());
+
 
         RecyclerView puzzlesView = binding.recycleView;
         BonusCardsAdapter adapter = new BonusCardsAdapter(puzzles, R.string.bonus_head_information);

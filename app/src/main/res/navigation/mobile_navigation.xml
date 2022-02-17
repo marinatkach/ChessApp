@@ -56,9 +56,9 @@
         tools:layout="@layout/fragment_empty_recycle_view" />
     <fragment
         android:id="@+id/nav_gps"
-        android:name="com.example.chessapp.ui.home.HomeFragment"
+        android:name="com.example.chessapp.ui.gps.GpsFragment"
         android:label="@string/menu_gps"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_gps" />
     <fragment
         android:id="@+id/nav_bonus"
         android:name="com.example.chessapp.ui.bonus.BonusListFragment"
@@ -66,9 +66,9 @@
         tools:layout="@layout/fragment_empty_recycle_view" />
     <fragment
         android:id="@+id/nav_admin"
-        android:name="com.example.chessapp.ui.home.HomeFragment"
+        android:name="com.example.chessapp.ui.admin.AdminFragment"
         android:label="@string/menu_admin"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_admin" />
 
     <fragment android:id="@+id/place_description"
         android:name="com.example.chessapp.ui.placedesc.PlaceDescriptionFragment"
