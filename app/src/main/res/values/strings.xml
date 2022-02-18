@@ -43,9 +43,13 @@
     <string name="admin_you_are_user">You have not admin right!</string>
 
 
-    <string name="bnt_gps_on">ON</string>
-    <string name="bnt_gps_off">OFF</string>
+    <string name="bnt_gps_on">Enable GPS</string>
+    <string name="bnt_gps_off">Disable GPS</string>
 
+    <string name="gps_disable_text">GPS is disabled</string>
+    <string name="gps_enable_text">GPS is enabled</string>
+
+    <string name="btn_map_add_place">Mark As Visited</string>
 
 
 
