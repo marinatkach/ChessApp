@@ -22,11 +22,12 @@ public class AdminFragment extends Fragment {
 
     private FragmentAdminBinding binding;
 
-    private AdminViewController adminViewController = new AdminViewController();
+    private AdminViewController adminViewController;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentAdminBinding.inflate(inflater, container, false);
+        adminViewController = new AdminViewController(this);
         final View root = binding.getRoot();
 
         if(adminViewController.hasAdminAccess()){
@@ -56,7 +57,7 @@ public class AdminFragment extends Fragment {
         });
 
         binding.adminShowByRadiusBtn.setOnClickListener(e -> {
-            adminViewController.setVisitedByRadius(100000);
+            adminViewController.setVisitedByRadius(Application.DISTANCE_SET_AS_VISITED_BY_RADIUS_METERS);
         });
 
         binding.adminShowAllClubsBtn.setOnClickListener(e -> {
@@ -74,6 +75,9 @@ public class AdminFragment extends Fragment {
         binding.adminResetAllBtn.setOnClickListener(e -> {
             adminViewController.setAllPlacesAsUnvisited();
         });
+
+        int km = (int)(Application.DISTANCE_SET_AS_VISITED_BY_RADIUS_METERS/1000);
+        binding.adminShowByRadiusBtn.setText(String.format("R = %s km", km) );
 
         return root;
     }

@@ -1,12 +1,20 @@
 package com.example.chessapp.helpers;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
+
+import com.example.chessapp.Application;
+import com.example.chessapp.storage.model.Place;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
@@ -17,9 +25,19 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
 import static android.content.ContentValues.TAG;
 
+import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
+
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import org.osmdroid.config.Configuration;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class GpsUtils {
@@ -28,6 +46,7 @@ public class GpsUtils {
     private LocationSettingsRequest mLocationSettingsRequest;
     private LocationManager locationManager;
     private LocationRequest locationRequest;
+
     public GpsUtils(Context context) {
         this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -43,6 +62,7 @@ public class GpsUtils {
         builder.setAlwaysShow(true); //this is the key ingredient
         //**************************
     }
+
     // method for turn on GPS
     public void turnGPSOn(onGpsListener onGpsListener) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -56,7 +76,7 @@ public class GpsUtils {
                         @SuppressLint("MissingPermission")
                         @Override
                         public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                        //  GPS is already enable, callback GPS status through listener
+                            //  GPS is already enable, callback GPS status through listener
                             if (onGpsListener != null) {
                                 onGpsListener.gpsStatus(true);
                             }
@@ -88,7 +108,46 @@ public class GpsUtils {
                     });
         }
     }
+
     public interface onGpsListener {
         void gpsStatus(boolean isGPSEnable);
+    }
+
+
+    public Location getLastKnowLocation() {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return null;
+        }
+        Location gps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location network = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if(gps == null && network == null) return null;
+
+        if(gps != null) {
+            return gps;
+        }
+        return network;
+    }
+
+    public static Location placeToLocation(Place place){
+        Location placeLocation = new Location("");
+        placeLocation.setLatitude(place.latitude);
+        placeLocation.setLongitude(place.longitude);
+        return placeLocation;
+    }
+
+    public List<Pair<Place, Float>> getDistances(List<Place> places)
+    {
+        Location currentLocation = getLastKnowLocation();
+        return places.stream().map(
+                place ->{
+                    Location location = GpsUtils.placeToLocation(place);
+                    if(currentLocation == null){
+                        return new Pair<Place, Float>(place, null);
+                    }
+                    return new Pair<Place, Float>(place, currentLocation.distanceTo(location));
+                }
+        ).collect(Collectors.toList());
+
     }
 }

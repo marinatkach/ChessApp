@@ -1,6 +1,8 @@
 package com.example.chessapp.ui.placeslist.cafes;
 
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chessapp.Application;
 import com.example.chessapp.R;
 import com.example.chessapp.databinding.FragmentEmptyRecycleViewBinding;
+import com.example.chessapp.helpers.GpsUtils;
 import com.example.chessapp.storage.model.Place;
 import com.example.chessapp.ui.placeslist.PlaceCardAdapter;
 import com.example.chessapp.ui.placeslist.PlacesListViewModel;
@@ -31,14 +34,21 @@ public class PlacesListFragment extends Fragment {
         binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        GpsUtils utils = new GpsUtils(getContext());
+
         List<Place> placeList = Application
                 .placeTable.all()
                 .stream()
                 .filter(place -> place.category.equals(Place.CATEGORY_CAFE))
                 .collect(Collectors.toList());
 
+        List<Pair<Place, Float>> placeDistances = utils.getDistances(placeList)
+                .stream()
+                .sorted((a,b) -> Float.compare(a.second, b.second))
+                .collect(Collectors.toList());
+
         RecyclerView placesList = binding.recycleView;
-        PlaceCardAdapter adapter = new PlaceCardAdapter(placeList, R.id.action_nav_cafes_to_place_description);
+        PlaceCardAdapter adapter = new PlaceCardAdapter(placeDistances, R.id.action_nav_cafes_to_place_description);
         placesList.setAdapter(adapter);
         placesList.setLayoutManager(new LinearLayoutManager(getContext()));
         return root;

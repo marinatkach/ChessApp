@@ -1,7 +1,9 @@
 package com.example.chessapp.ui.placeslist;
 
 import android.content.Context;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chessapp.Application;
 import com.example.chessapp.R;
+import com.example.chessapp.helpers.GpsUtils;
 import com.example.chessapp.storage.model.Place;
 
 import java.util.List;
 
 public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.ViewHolder> {
 
-    private List<Place> places;
+    private List<Pair<Place, Float>>  places;
     private final int onClickNavigationAction;
 
-    public PlaceCardAdapter(List<Place> place, int onClickNavigationAction) {
+    public PlaceCardAdapter(List<Pair<Place, Float>> place, int onClickNavigationAction) {
         this.places = place;
         this.onClickNavigationAction = onClickNavigationAction;
     }
@@ -43,15 +47,33 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get the data model based on position
-        Place contact = places.get(position);
+        Place contact = places.get(position).first;
         holder.addOnClickEvent(contact.id);
 
         // Set item views based on your views and data model
         TextView placeName = holder.nameTextView;
         TextView placeDistance = holder.distanceTextView;
         placeName.setText(contact.clubName);
-        // todo: add distance in card
-        placeDistance.setText("12.3 KM");
+
+        float distance = places.get(position).second;
+        String distanceStr = String.valueOf(distance/1000).substring(0, 4);
+        String units = "km";
+        if(distance < 1000){
+            distanceStr = String.valueOf(distance).substring(0, 4);
+            units = "m";
+        }
+
+        if(distanceStr.endsWith(".")) distanceStr = distanceStr.replace(".", "");
+        distanceStr += " " + units;
+        placeDistance.setText(distanceStr);
+
+        int color = R.color.distance_far;
+        if(distance <= Application.DISTANCE_TO_PLACE_NEAR_METERS){
+            color = R.color.distance_near;
+        }else if(distance <= Application.DISTANCE_TO_PLACE_MIDDLE_METERS){
+            color = R.color.distance_near;
+        }
+        placeDistance.setBackgroundColor(holder.itemView.getResources().getColor(color));
 
     }
 

@@ -1,5 +1,7 @@
 package com.example.chessapp.storage.model;
 
+import java.util.Objects;
+
 public class Place {
     public int id;
     public String clubName;

@@ -21,6 +21,13 @@ public class Application {
     public static UserStateTable stateTable = null;
     public static final String DB_NAME = "db";
 
+    public static final int DISTANCE_METERS = 1000;
+    public static final int DISTANCE_TO_ADD_TO_VISITED_METES = 100;
+
+    public static final int DISTANCE_TO_PLACE_NEAR_METERS = 200;
+    public static final int DISTANCE_TO_PLACE_MIDDLE_METERS = 700;
+    public static final int DISTANCE_SET_AS_VISITED_BY_RADIUS_METERS = 10000;
+
 
     public static UserState getCurrentUserState(){
         return stateTable.all().get(0);
