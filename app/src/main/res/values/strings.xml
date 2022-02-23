@@ -23,10 +23,6 @@
 
     <string name="bnt_open_solution">Solution</string>
     <string name="bnt_hide_solution">Hide</string>
-
-
-
-
     <string name="puzzles_head_information">PUZZLES! Click Open Zoom Meetings on the dialog shown by your browser. If you don`t see a dialog, click Launch Zoom below.</string>
     <string name="bonus_head_information">BONUS! Click Open Zoom Meetings on the dialog shown by your browser. If you don`t see a dialog, click Launch Zoom below.</string>
     <string name="admin_head_information">ADMIN! Click Open Zoom Meetings on the dialog shown by your browser. </string>
@@ -36,11 +32,13 @@
     <string name="bnt_admin_show_outdoors">All Outdoors</string>
     <string name="bnt_admin_show_cafes">All Cafes</string>
     <string name="bnt_admin_reset_all">Reset All</string>
-    <string name="bnt_admin_reset_radius">R = 100 km</string>
+    <string name="bnt_admin_reset_radius">Select Radius</string>
     <string name="bnt_admin_logout">Logout</string>
     <string name="bnt_admin_login">Login</string>
     <string name="admin_you_are_admin">You are Admin!</string>
     <string name="admin_you_are_user">You have not admin right!</string>
+    <string name="admin_cannot_get_location">Cannot Get Location!</string>
+    <string name="admin_success">Success!</string>
 
 
     <string name="bnt_gps_on">Enable GPS</string>
@@ -52,11 +50,29 @@
     <string name="btn_map_add_place">Mark As Visited</string>
 
 
+    <string name="history_top">Chess is a game for people of all ages.</string>
+    <string name="history_body">Playing chess from childhood contributes to the improvement of academic performance and the harmonious development of the individual. They develop memory, logical thinking, improve concentration, teach to analyze and systematize large amounts of information; encourage creativity, ingenuity and the development of imagination, bring up willpower and the desire to achieve the goal.</string>
+    <string name="history_body1">Statement about the chess of world champions.</string>
+    <string name="history_willam1"><b>Wilhelm Steinitz</b> (1836-1900), World Chess Champion 1886-1894, Austria-Hungary, USA</string>
+    <string name="history_willam2">“Chess is not for the faint-hearted“</string>
 
+    <string name="history_emanuel1"><b>Emanuel Lasker</b> (1868–1941), World Chess Champion 1894–1921, German Empire</string>
+    <string name="history_emanuel2">“Without mistakes, there can be no brilliant victories”</string>
 
     <string name="text_home_up">Hello,\n you are welcomed by the app "chess places GO"</string>
     <string name="text_home_center">The app will show you all the chess places in Munich and its surroundings (clubs, cafes, outdoor places). The app will help you find a chess club that suits your level of play. You can also enjoy solving chess problems from the best games of Munich chess players! Visit chess places and unlock the bonus!</string>
     <string name="text_home_bottom">Designed by Irina Krivoborodova in 2022</string>
     <string name="wrong_password">Wrong Password</string>
+
+    <string name="bonus_extra_text">The best chess books\n1. "Bobby Fischer teaches you how to play chess" - Robert Fischer\n2. "Chess game textbook" - Emanuel Lasker\n3. "My system" - Aron Nimzowitsch\n4. "Endgame Tutorial" - Mark Dvoretsky\n5. "My great predecessors" - Garry Kasparov\n\nGrandmaster`s advice\n1. In the opening, a chess player must develop all the pieces, fight for the center, castling\n2. In the middlegame, a chess player must make a plan (3-4 moves ahead) and follow it.\nBest plan: active play (pawn advances, regrouping of pieces and exchanges)\n3. In the endgame, the strength of the king increases\n\nThe best chess platforms on the Internet \nhttps://lichess.org/\nhttps://www.chess.com/\n</string>
+
+    <string-array name="spinnerItems">
+        <item>500 m</item>
+        <item>1 km</item>
+        <item>3 km</item>
+        <item>5 km</item>
+        <item>10 km</item>
+        <item>20 km</item>
+    </string-array>
 
 </resources>

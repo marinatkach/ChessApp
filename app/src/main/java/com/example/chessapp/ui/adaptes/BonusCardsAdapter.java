@@ -16,8 +16,8 @@ import java.util.List;
 
 public class BonusCardsAdapter extends PuzzlesCardsAdapter {
 
-    public BonusCardsAdapter(List<Puzzle> puzzles, int infoTextId) {
-        super(puzzles, infoTextId);
+    public BonusCardsAdapter(List<Puzzle> puzzles, int infoTextId, boolean isAlLPlacesFound) {
+        super(puzzles, infoTextId, isAlLPlacesFound);
     }
 
     @Override

@@ -7,14 +7,28 @@ import com.example.chessapp.R;
 
 public class AppHelpers {
 
+
     public static void setImageOrDefault(ImageView image, String resourceId){
-        try {
-            int resourceIdNum = Integer.parseInt(resourceId);
-            image.setImageResource(resourceIdNum);
-        }catch (NumberFormatException exception){
-            Log.w("Place Info Card Adapter", "cannot parse resource image id " + resourceId);
-            image.setImageResource(R.drawable.ic_launcher_background);
+       setImageOrDefault(image, resourceId, "com.example.chessapp");
+    }
+
+
+    public static void setImageOrDefault(ImageView image, String resourceId, String packageName ){
+
+        String resourceName = resourceId;
+        if(resourceName.contains(".")){
+            resourceName = resourceName.split("\\.")[0];
         }
+
+        int drawableResourceId = image.getContext().getResources().getIdentifier(resourceName, "drawable", packageName);
+
+        if(drawableResourceId == 0)
+        {
+            Log.w("Place Info Card Adapter", "cannot parse resource image id " + resourceId);
+            drawableResourceId = R.drawable.ic_launcher_background;
+        }
+        image.setImageResource(drawableResourceId);
+
     }
 
     public static String hideString(String sourceString){

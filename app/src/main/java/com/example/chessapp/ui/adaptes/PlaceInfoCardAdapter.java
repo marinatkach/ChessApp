@@ -67,12 +67,15 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         TextView clubNameDescriptionTextView = holder.clubNameDescriptionTextView;
         TextView cardDescriptionLink = holder.cardDescriptionLink;
         TextView placeInfoText = holder.placeInfoText;
+        TextView placeAdressText = holder.placeAdressText;
+
         ImageView clubImage = holder.clubImage;
 
 
         clubNameDescriptionTextView.setText(place.clubName);
         cardDescriptionLink.setText(place.link);
         placeInfoText.setText(place.info);
+        placeAdressText.setText(place.address);
 
         if(puzzles.isEmpty())
         {
@@ -111,6 +114,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         public TextView clubNameDescriptionTextView;
         public TextView cardDescriptionLink;
         public TextView placeInfoText;
+        public TextView placeAdressText;
         public TextView puzzlesText;
         public ImageView clubImage;
 
@@ -127,6 +131,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
            placeInfoText = (TextView) itemView.findViewById(R.id.placeInfoText);
            clubImage = (ImageView) itemView.findViewById(R.id.clubImage);
            puzzlesText = (TextView) itemView.findViewById(R.id.placeInfoPuzzlesTextView);
+           placeAdressText = (TextView) itemView.findViewById(R.id.placeAddres);
 
         }
     }

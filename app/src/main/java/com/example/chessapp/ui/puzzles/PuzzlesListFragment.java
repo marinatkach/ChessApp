@@ -36,7 +36,7 @@ public class PuzzlesListFragment extends Fragment {
                 .collect(Collectors.toList());
 
         RecyclerView puzzlesView = binding.recycleView;
-        PuzzlesCardsAdapter adapter = new PuzzlesCardsAdapter(puzzles, R.string.puzzles_head_information);
+        PuzzlesCardsAdapter adapter = new PuzzlesCardsAdapter(puzzles, R.string.puzzles_head_information, false);
         puzzlesView.setAdapter(adapter);
         puzzlesView.setLayoutManager(new LinearLayoutManager(getContext()));
         return binding.getRoot();

@@ -27,7 +27,6 @@ public class PlaceDescriptionFragment extends Fragment {
     private FragmentEmptyRecycleViewBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        PlaceDescriptionModel historyViewModel =  new ViewModelProvider(this).get(PlaceDescriptionModel.class);
 
         Integer placeId = requireArguments().getInt("placeId");
 
@@ -40,6 +39,7 @@ public class PlaceDescriptionFragment extends Fragment {
         List<Puzzle> puzzles = Application.puzzlesTable.all().stream()
                 .filter(it -> it.clubName != null)
                 .filter(it -> it.clubName.equals(place.clubName))
+                .filter(it -> it.isPublic)
                 .collect(Collectors.toList());;
 
 

@@ -1,24 +1,15 @@
 package com.example.chessapp.ui.map;
 
-import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
-
-import android.Manifest;
-import android.content.Context;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.chessapp.databinding.FragmentMapBinding;
 
-import org.osmdroid.config.Configuration;
 import org.osmdroid.views.MapView;
 
 public class MapFragment extends Fragment {

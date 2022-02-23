@@ -57,7 +57,7 @@ public class AdminFragment extends Fragment {
         });
 
         binding.adminShowByRadiusBtn.setOnClickListener(e -> {
-            adminViewController.setVisitedByRadius(Application.DISTANCE_SET_AS_VISITED_BY_RADIUS_METERS);
+            adminViewController.setVisitedByRadius(binding.adminRadiusSpinner.getSelectedItem().toString());
         });
 
         binding.adminShowAllClubsBtn.setOnClickListener(e -> {
@@ -75,9 +75,6 @@ public class AdminFragment extends Fragment {
         binding.adminResetAllBtn.setOnClickListener(e -> {
             adminViewController.setAllPlacesAsUnvisited();
         });
-
-        int km = (int)(Application.DISTANCE_SET_AS_VISITED_BY_RADIUS_METERS/1000);
-        binding.adminShowByRadiusBtn.setText(String.format("R = %s km", km) );
 
         return root;
     }
@@ -113,6 +110,7 @@ public class AdminFragment extends Fragment {
         setEnable(binding.adminShowAllClubsBtn, true);
         setEnable(binding.adminShowAllOutdoorsBtn, true);
         setEnable(binding.adminShowByRadiusBtn, true);
+        binding.adminRadiusSpinner.setVisibility(View.VISIBLE);
 
     }
 
@@ -133,6 +131,8 @@ public class AdminFragment extends Fragment {
         setEnable(binding.adminShowAllClubsBtn, false);
         setEnable(binding.adminShowAllOutdoorsBtn, false);
         setEnable(binding.adminShowByRadiusBtn, false);
+        binding.adminRadiusSpinner.setVisibility(View.INVISIBLE);
+
     }
 
     @Override

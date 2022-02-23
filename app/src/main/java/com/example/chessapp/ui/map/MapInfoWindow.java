@@ -1,11 +1,8 @@
 package com.example.chessapp.ui.map;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.navigation.Navigation;
 

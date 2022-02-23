@@ -18,16 +18,18 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private List<Puzzle> puzzles;
     private int infoTextId;
+    private boolean printSuccessMessage = false;
 
-    public PuzzlesCardsAdapter( List<Puzzle> puzzles, int infoTextId) {
-
+    public PuzzlesCardsAdapter( List<Puzzle> puzzles, int infoTextId, boolean printSuccessMessage) {
         this.puzzles = puzzles;
         this.infoTextId = infoTextId;
+        this.printSuccessMessage = printSuccessMessage;
     }
 
     @Override
     public int getItemViewType(int position) {
         if(position == 0) return 0;
+        if(printSuccessMessage && position == puzzles.size() + 1) return 0;
         return 1;
     }
 
@@ -58,13 +60,19 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     protected void onBindPuzzlesInfoViewHolder(InfoViewHolder holder, int position){
-        holder.infoNameTextView.setText(infoTextId);
+        if(position == 0){
+            holder.infoNameTextView.setText(infoTextId);
+        }
+        else {
+            holder.infoNameTextView.setText(R.string.bonus_extra_text);
+        }
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        if(holder.getItemViewType() == 0 )
+        if(holder.getItemViewType() == 0)
         {
             onBindPuzzlesInfoViewHolder((InfoViewHolder) holder, position);
         }
@@ -76,7 +84,9 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return puzzles.size() + 1; // puzzles + info
+        int cnt = puzzles.size() + 1; // puzzles + info
+        if(printSuccessMessage) cnt++;
+        return cnt;
     }
 
 
@@ -89,5 +99,6 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             infoNameTextView = (TextView) itemView.findViewById(R.id.puzzlesHeadInfoTextView);
         }
     }
+
 
 }

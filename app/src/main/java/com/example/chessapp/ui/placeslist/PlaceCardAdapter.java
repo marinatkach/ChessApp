@@ -55,7 +55,16 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
         TextView placeDistance = holder.distanceTextView;
         placeName.setText(contact.clubName);
 
-        float distance = places.get(position).second;
+        Float distance = places.get(position).second;
+
+        if(distance == null){
+            placeDistance.setText("");
+            placeDistance.setVisibility(View.INVISIBLE);
+            placeDistance.setBackgroundColor(holder.itemView.getResources().getColor(R.color.distance_unknown));
+            return;
+        }
+
+
         String distanceStr = String.valueOf(distance/1000).substring(0, 4);
         String units = "km";
         if(distance < 1000){

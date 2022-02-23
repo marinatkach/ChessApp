@@ -63,6 +63,10 @@ public class GpsUtils {
         //**************************
     }
 
+    public LocationManager getLocationManager(){
+        return locationManager;
+    }
+
     // method for turn on GPS
     public void turnGPSOn(onGpsListener onGpsListener) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -148,6 +152,7 @@ public class GpsUtils {
                     return new Pair<Place, Float>(place, currentLocation.distanceTo(location));
                 }
         ).collect(Collectors.toList());
-
     }
+
+
 }

@@ -40,9 +40,10 @@ public class BonusListFragment extends Fragment {
                 .filter(it -> visitedPlaces.contains(it.clubName))
                 .collect(Collectors.toList());
 
+        boolean isAllPlacesFound = Application.placeTable.all().stream().allMatch(it -> it.isVisited);
 
         RecyclerView puzzlesView = binding.recycleView;
-        BonusCardsAdapter adapter = new BonusCardsAdapter(puzzles, R.string.bonus_head_information);
+        BonusCardsAdapter adapter = new BonusCardsAdapter(puzzles, R.string.bonus_head_information, isAllPlacesFound);
         puzzlesView.setAdapter(adapter);
         puzzlesView.setLayoutManager(new LinearLayoutManager(getContext()));
         return binding.getRoot();

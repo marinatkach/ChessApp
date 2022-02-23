@@ -105,7 +105,7 @@
 
         <Button
             android:id="@+id/adminShowByRadiusBtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/admin_btn_color"
             android:text="@string/bnt_admin_reset_radius"
@@ -115,6 +115,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/adminShowAllOutdoorsBtn" />
 
+        <Spinner
+            android:id="@+id/adminRadiusSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/adminShowByRadiusBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/adminShowByRadiusBtn"
+            app:layout_constraintTop_toTopOf="@+id/adminShowByRadiusBtn"
+            android:entries="@array/spinnerItems"
+            android:textAlignment="center"
+            />
         <Button
             android:id="@+id/adminShowAllClubsBtn"
             android:layout_width="match_parent"

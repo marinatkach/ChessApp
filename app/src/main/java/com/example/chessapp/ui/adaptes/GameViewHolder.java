@@ -17,6 +17,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
     ImageView gameImage;
     TextView  gameAnswerTextView;
     TextView gamePlayerTextView;
+    TextView gameInfoTextView;
     Button gameBntShowAnswer;
 
 
@@ -33,6 +34,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         this.gameAnswerTextView = (TextView) itemView.findViewById(R.id.gameAnswerTextView);
         this.gameBntShowAnswer = (Button) itemView.findViewById(R.id.gameBntShowAnswer);
         this.gamePlayerTextView = (TextView) itemView.findViewById(R.id.gamePlayerNameTextView);
+        this.gameInfoTextView = (TextView) itemView.findViewById(R.id.gameInfoTextView);
 
     }
 
@@ -43,10 +45,12 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         ImageView gameImage = holder.gameImage;
         TextView  gameAnswerTextView = holder.gameAnswerTextView;
         TextView  gamePlayerTextView = holder.gamePlayerTextView;
+        TextView  gameInfoTextView = holder.gameInfoTextView;
         Button gameBntShowAnswer = holder.gameBntShowAnswer;
 
         gameNameTextView.setText(puzzle.name);
         gamePlayerTextView.setText(puzzle.playerText);
+        gameInfoTextView.setText(puzzle.gameInfo);
         AppHelpers.setImageOrDefault(gameImage, puzzle.image);
 
         gameAnswerTextView.setText(AppHelpers.hideString(puzzle.solution));

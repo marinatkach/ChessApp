@@ -10,11 +10,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -76,7 +78,23 @@ public class MapController {
         LocationManager locationManager = (LocationManager) mapFragment.getActivity().getSystemService(Context.LOCATION_SERVICE);
         try {
 //            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 10, this::updatePlacesStateByCurrentLocation);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 5, this::updatePlacesStateByCurrentLocation);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 5, new LocationListener() {
+                @Override
+                public void onLocationChanged(@NonNull Location location) {
+                   updatePlacesStateByCurrentLocation(location);
+                }
+
+                @Override
+                public void onProviderEnabled(@NonNull String provider) {
+
+                }
+
+                @Override
+                public void onProviderDisabled(@NonNull String provider) {
+
+                }
+
+            });
         }
         catch (Exception ex) {
             //do something useful here
@@ -88,7 +106,7 @@ public class MapController {
         if (ContextCompat.checkSelfPermission(mapFragment.getActivity(),  Manifest.permission.ACCESS_FINE_LOCATION) == PERMISSION_GRANTED) {
 
         } else {
-            ActivityCompat.requestPermissions( mapFragment.getActivity(),  new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1 );
+          //  ActivityCompat.requestPermissions( mapFragment.getActivity(),  new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1 );
         }
 
         Configuration.getInstance().load(mapFragment.getContext(), PreferenceManager.getDefaultSharedPreferences(mapFragment.getContext()));
