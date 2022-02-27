@@ -5,9 +5,11 @@ import android.util.Log;
 
 import com.example.chessapp.helpers.AppHelpers;
 import com.example.chessapp.storage.DBResourceManager;
+import com.example.chessapp.storage.PersonTable;
 import com.example.chessapp.storage.PlaceTable;
 import com.example.chessapp.storage.PuzzlesTable;
 import com.example.chessapp.storage.UserStateTable;
+import com.example.chessapp.storage.model.Person;
 import com.example.chessapp.storage.model.Place;
 import com.example.chessapp.storage.model.Puzzle;
 import com.example.chessapp.storage.model.UserState;
@@ -19,7 +21,8 @@ public class Application {
     public static PlaceTable placeTable = null;
     public static PuzzlesTable puzzlesTable = null;
     public static UserStateTable stateTable = null;
-    public static final String DB_NAME = "db2202";
+    public static PersonTable personTable = null;
+    public static final String DB_NAME = "db2203";
 
     public static final int DISTANCE_METERS = 1000;
     public static final int DISTANCE_TO_ADD_TO_VISITED_METES = 100;
@@ -39,16 +42,19 @@ public class Application {
         puzzlesTable = new PuzzlesTable(context, DB_NAME);
         placeTable = new PlaceTable(context, DB_NAME);
         stateTable = new UserStateTable(context, DB_NAME);
+        personTable = new PersonTable(context, DB_NAME);
 
         if(recreate){
             puzzlesTable.recreate();
             placeTable.recreate();
             stateTable.recreate();
+            personTable.recreate();
         }
         if(clearAndFill){
             puzzlesTable.clear();
             placeTable.clear();
             stateTable.clear();
+            personTable.clear();
         }
         fillDB();
     }
@@ -104,7 +110,7 @@ public class Application {
                             new Place("Bodenschach","Bad-Schachener-Straße 28, 81671 München", dummyInfoText,"",11.61739184609688,48.12027762259076,Place.CATEGORY_OUTDOOR, "logo1.jpeg", false),
                             new Place("Mehlfeld's","Guardinistr. 98a, 81375 München",dummyInfoText,"https://www.mehlfeld.com/",11.490581831820519,48.11949476046334,Place.CATEGORY_CAFE, "logo1.jpeg", false),
                             new Place("Cafe am Beethovenplatz","Goethestraße 51, München",dummyInfoText,"https://discover.events.com/de/bavaria/munich/e/business/weekly-chess-evening-cafe-30092021-cafe-beethovenplatz-422064929",11.558762946418963,48.13334696875066,Place.CATEGORY_CAFE, "logo1.jpeg", false),
-                           new Place("Schelling-Salon","Schellingstraße 54, 80799 München",dummyInfoText,"https://www.schelling-salon.de/spiel-sport.html",11.5731287725254,48.1511776279703,Place.CATEGORY_CAFE, "logo1.jpeg", false),
+                            new Place("Schelling-Salon","Schellingstraße 54, 80799 München",dummyInfoText,"https://www.schelling-salon.de/spiel-sport.html",11.5731287725254,48.1511776279703,Place.CATEGORY_CAFE, "logo1.jpeg", false),
         };
 
             Arrays.stream(arr).forEach(placeTable::push);
@@ -114,6 +120,13 @@ public class Application {
         if(stateTable.all().isEmpty()){
             UserState state = new UserState(false, "1234", "admin");
             stateTable.push(state);
+        }
+
+        if(personTable.all().isEmpty()){
+            Person[] arr = new Person[]{
+
+            };
+            Arrays.stream(arr).forEach(personTable::push);
         }
     }
 

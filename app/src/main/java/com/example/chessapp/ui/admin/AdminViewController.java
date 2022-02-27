@@ -71,23 +71,45 @@ public class AdminViewController  {
         printSuccess();
     }
 
+
     public void setVisitedByRadius(String inputText){
+
+        String text = inputText.trim();
         boolean isKm = true;
-        int meeters = 0;
-        String text = inputText;
-        if(!inputText.contains("km")){
-            isKm = false;
-            text = text.replace("m", "").trim();
+
+        if(text.equals("")){
+            printMessageToast("Error: Empty input!");
+            return;
         }
-        else{
+
+
+        if(text.contains("km")){
             text = text.replace("km", "").trim();
         }
-        meeters = Integer.parseInt(text);
-        if(isKm) meeters *= 1000;
-        setVisitedByRadius(meeters);
-    }
+        else if(text.contains("m")){
+            text = text.replace("m", "").trim();
+            isKm = false;
+        }
 
-    public void setVisitedByRadius(int meters){
+        text = text.replace(",", ".");
+
+        Double radius = null;
+        try {
+            radius = Double.parseDouble(text);
+        }catch (NumberFormatException e){
+            printMessageToast("Error: Incorrect input!");
+            return;
+        }
+
+        int meters = -1;
+
+        if(isKm){
+            meters = (int) (radius*1000);
+        }else {
+            meters = (int) (double) radius;
+        }
+
+
         Location location = gpsUtils.getLastKnowLocation();
         if(location == null) {
             int duration = Toast.LENGTH_SHORT;
@@ -104,6 +126,12 @@ public class AdminViewController  {
             }
         }
         printSuccess();
+    }
+
+    private void printMessageToast(String text){
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(fragment.getContext(), text, duration);
+        toast.show();
     }
 
     private void printSuccess(){

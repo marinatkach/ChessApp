@@ -16,9 +16,11 @@ import android.util.Pair;
 import android.widget.Toast;
 
 import com.example.chessapp.Application;
+import com.example.chessapp.R;
 import com.example.chessapp.storage.model.Place;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -121,11 +123,35 @@ public class GpsUtils {
 
 
     public Location getLastKnowLocation() {
-        System.out.println("Permission " +  ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) );
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+        if (
+                ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ) {
             return null;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 500.0f, new LocationListener() {
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 1.0f, new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {  }
+
+            @Override
+            public void onLocationChanged(@NonNull List<Location> locations) { }
+
+            @Override
+            public void onFlushComplete(int requestCode) { }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) { }
+
+            @Override
+            public void onProviderEnabled(@NonNull String provider) { }
+
+            @Override
+            public void onProviderDisabled(@NonNull String provider) { }
+        });
+
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000L, 1.0f, new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {  }
 
@@ -146,7 +172,19 @@ public class GpsUtils {
         });
 
 
-        return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
     }
 
 

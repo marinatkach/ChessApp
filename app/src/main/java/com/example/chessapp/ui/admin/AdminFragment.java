@@ -1,11 +1,13 @@
 package com.example.chessapp.ui.admin;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -57,7 +59,7 @@ public class AdminFragment extends Fragment {
         });
 
         binding.adminShowByRadiusBtn.setOnClickListener(e -> {
-            adminViewController.setVisitedByRadius(binding.adminRadiusSpinner.getSelectedItem().toString());
+            adminViewController.setVisitedByRadius(binding.adminRadiusEditText.getText().toString());
         });
 
         binding.adminShowAllClubsBtn.setOnClickListener(e -> {
@@ -95,12 +97,17 @@ public class AdminFragment extends Fragment {
         Log.i("Admin","Process Login");
         binding.adminLoginOutBtn.setText(R.string.bnt_admin_logout);
 
+        InputMethodManager imm = (InputMethodManager)  this.getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(this.getActivity().getWindow().getDecorView().getWindowToken(), 0);
+
         EditText passwordInput = binding.adminPasswordEditText;
         String currentInput = passwordInput.getText().toString();
 
         passwordInput.setText(AppHelpers.hideString(currentInput));
         passwordInput.setInputType(InputType.TYPE_NULL);
         passwordInput.setFocusable(View.NOT_FOCUSABLE);
+        passwordInput.setVisibility(View.GONE);
+
 
         binding.adminAccessTextView.setText(R.string.admin_you_are_admin);
 
@@ -110,8 +117,14 @@ public class AdminFragment extends Fragment {
         setEnable(binding.adminShowAllClubsBtn, true);
         setEnable(binding.adminShowAllOutdoorsBtn, true);
         setEnable(binding.adminShowByRadiusBtn, true);
-        binding.adminRadiusSpinner.setVisibility(View.VISIBLE);
+        binding.adminRadiusEditText.setVisibility(View.VISIBLE);
+        binding.adminRadiusEditText.setFocusableInTouchMode(false);
+        binding.adminRadiusEditText.setFocusable(false);
+        binding.adminRadiusEditText.setFocusableInTouchMode(true);
+        binding.adminRadiusEditText.setFocusable(true);
+        binding.adminRadiusEditText.clearFocus();
 
+        binding.adminRadiusEditText.setCursorVisible(false);
     }
 
     private void processLogout(FragmentAdminBinding binding){
@@ -123,6 +136,9 @@ public class AdminFragment extends Fragment {
         passwordInput.setText("");
         passwordInput.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         passwordInput.setFocusable(View.FOCUSABLE);
+        passwordInput.setVisibility(View.VISIBLE);
+        passwordInput.setFocusableInTouchMode(true);
+        passwordInput.setFocusable(true);
 
         binding.adminAccessTextView.setText(R.string.admin_you_are_user);
 
@@ -131,7 +147,7 @@ public class AdminFragment extends Fragment {
         setEnable(binding.adminShowAllClubsBtn, false);
         setEnable(binding.adminShowAllOutdoorsBtn, false);
         setEnable(binding.adminShowByRadiusBtn, false);
-        binding.adminRadiusSpinner.setVisibility(View.INVISIBLE);
+        binding.adminRadiusEditText.setVisibility(View.INVISIBLE);
 
     }
 
