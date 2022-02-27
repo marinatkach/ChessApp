@@ -65,6 +65,7 @@ public class GpsFragment extends Fragment {
         if(reverse) isEnabled = !isEnabled;
 
         if(isEnabled){
+            controller.makeLocationRequest();
             binding.gpsBtnOnOff.setText(R.string.bnt_gps_off);
             binding.gpsTextStateTextView.setText(R.string.gps_enable_text);
         }else{

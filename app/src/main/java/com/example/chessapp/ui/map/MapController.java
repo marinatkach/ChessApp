@@ -12,6 +12,7 @@ import android.graphics.drawable.VectorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
@@ -78,7 +79,7 @@ public class MapController {
         LocationManager locationManager = (LocationManager) mapFragment.getActivity().getSystemService(Context.LOCATION_SERVICE);
         try {
 //            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 10, this::updatePlacesStateByCurrentLocation);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 5, new LocationListener() {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 50, new LocationListener() {
                 @Override
                 public void onLocationChanged(@NonNull Location location) {
                    updatePlacesStateByCurrentLocation(location);
@@ -94,6 +95,17 @@ public class MapController {
 
                 }
 
+                @Override
+                public void onLocationChanged(@NonNull List<Location> locations) {
+                }
+
+                @Override
+                public void onFlushComplete(int requestCode) {
+                }
+
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+                }
             });
         }
         catch (Exception ex) {

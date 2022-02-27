@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
@@ -119,19 +121,35 @@ public class GpsUtils {
 
 
     public Location getLastKnowLocation() {
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        System.out.println("Permission " +  ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) );
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return null;
         }
-        Location gps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Location network = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        if(gps == null && network == null) return null;
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 500.0f, new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {  }
 
-        if(gps != null) {
-            return gps;
-        }
-        return network;
+            @Override
+            public void onLocationChanged(@NonNull List<Location> locations) { }
+
+            @Override
+            public void onFlushComplete(int requestCode) { }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) { }
+
+            @Override
+            public void onProviderEnabled(@NonNull String provider) { }
+
+            @Override
+            public void onProviderDisabled(@NonNull String provider) { }
+        });
+
+
+        return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
+
+
 
     public static Location placeToLocation(Place place){
         Location placeLocation = new Location("");

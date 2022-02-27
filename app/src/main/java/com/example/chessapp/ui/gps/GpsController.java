@@ -38,8 +38,14 @@ public class GpsController {
         utils =new GpsUtils(context);
     }
 
+    public void makeLocationRequest(){
+        utils.getLastKnowLocation();
+    }
+
     public void enableGps(){
-        utils.turnGPSOn(e -> {});
+        utils.turnGPSOn(e -> {
+            utils.getLastKnowLocation();
+        });
     }
 
     public void disableGps(GpsFragment fragment){
@@ -52,8 +58,7 @@ public class GpsController {
     }
 
     public void checkAndRequestPermission(){
-        if (ContextCompat.checkSelfPermission(fragment.getActivity(),  Manifest.permission.ACCESS_FINE_LOCATION) == PERMISSION_GRANTED) {
-        } else {
+        if (ContextCompat.checkSelfPermission(fragment.getActivity(),  Manifest.permission.ACCESS_FINE_LOCATION) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions( fragment.getActivity(),  new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1 );
         }
         Configuration.getInstance().load(fragment.getContext(), PreferenceManager.getDefaultSharedPreferences(fragment.getContext()));

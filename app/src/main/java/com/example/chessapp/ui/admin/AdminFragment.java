@@ -121,7 +121,7 @@ public class AdminFragment extends Fragment {
         EditText passwordInput = binding.adminPasswordEditText;
 
         passwordInput.setText("");
-        passwordInput.setInputType(InputType.TYPE_CLASS_TEXT);
+        passwordInput.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         passwordInput.setFocusable(View.FOCUSABLE);
 
         binding.adminAccessTextView.setText(R.string.admin_you_are_user);

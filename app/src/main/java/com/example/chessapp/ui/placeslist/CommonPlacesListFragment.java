@@ -18,7 +18,9 @@ import com.example.chessapp.databinding.FragmentEmptyRecycleViewBinding;
 import com.example.chessapp.helpers.GpsUtils;
 import com.example.chessapp.storage.model.Place;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CommonPlacesListFragment extends Fragment {
@@ -45,7 +47,7 @@ public class CommonPlacesListFragment extends Fragment {
         binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        GpsUtils utils = new GpsUtils(getContext());
+        GpsUtils utils = new GpsUtils(requireContext());
 
         List<Place> placeList = Application
                 .placeTable.all()
@@ -54,6 +56,8 @@ public class CommonPlacesListFragment extends Fragment {
                 .collect(Collectors.toList());
 
         List<Pair<Place, Float>> placeDistances = utils.getDistances(placeList);
+
+        System.out.println(Arrays.toString(placeDistances.toArray()));
 
         if(!placeDistances.isEmpty() && placeDistances.get(0).second != null){
             placeDistances = placeDistances.stream()
@@ -72,5 +76,6 @@ public class CommonPlacesListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        category = null;
     }
 }
