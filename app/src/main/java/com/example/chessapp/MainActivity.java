@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Application.init(this, false, false); // init db
+        Application.init(this, true, true); // init db
         Application.printAllTables();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());

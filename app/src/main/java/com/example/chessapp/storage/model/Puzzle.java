@@ -35,4 +35,17 @@ public class Puzzle {
         this.gameInfo = gameInfo;
     }
 
+    @Override
+    public String toString() {
+        return "Puzzle{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", solution='" + solution + '\'' +
+                ", clubName='" + clubName + '\'' +
+                ", playerText='" + playerText + '\'' +
+                ", gameInfo='" + gameInfo + '\'' +
+                ", isPublic=" + isPublic +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }

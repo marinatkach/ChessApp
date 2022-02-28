@@ -62,4 +62,6 @@ public class PuzzlesTable extends DBResourceManager<Puzzle> {
         return daten;
     }
 
+
+
 }

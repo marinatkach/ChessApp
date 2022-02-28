@@ -19,7 +19,7 @@
             android:id="@+id/personNameTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:textColor="@color/black"
@@ -30,22 +30,28 @@
             android:id="@+id/personInfoText"
             android:layout_width="match_parent"
             android:layout_marginTop="16dp"
-            android:text="@string/history_body"
+            android:textColor="@color/black"
+            android:justificationMode="inter_word"
+            android:text="@string/history_willam1"
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/personImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
             android:maxHeight="270dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/history_17_magnus_carlsen" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/personCitate"
             android:gravity="center"
             android:textStyle="italic"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/history_willam2" />

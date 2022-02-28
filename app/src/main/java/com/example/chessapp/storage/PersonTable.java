@@ -40,7 +40,7 @@ public class PersonTable extends DBResourceManager<Person> {
         daten.put("name", obj.name);
         daten.put("info", obj.info);
         daten.put("сitation", obj.citate);
-        daten.put("image", obj.info);
+        daten.put("image", obj.image);
         return daten;
     }
 

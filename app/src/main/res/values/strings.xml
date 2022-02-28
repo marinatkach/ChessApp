@@ -52,7 +52,11 @@
 
     <string name="history_top">Chess is a game for people of all ages.</string>
     <string name="history_body">Playing chess from childhood contributes to the improvement of academic performance and the harmonious development of the individual. They develop memory, logical thinking, improve concentration, teach to analyze and systematize large amounts of information; encourage creativity, ingenuity and the development of imagination, bring up willpower and the desire to achieve the goal.</string>
+
+    <string name="history_head_citate"><i>“The skills learned at the chessboard will be useful to you in life. No one will regret the time given to Chess, because it will help in any profession.”</i>\n\n<b>Tigran Petrosyan,\n World Chess Champion</b></string>
     <string name="history_body1">Statement about the chess of world champions.</string>
+
+
     <string name="history_willam1"><b>Wilhelm Steinitz</b> (1836-1900), World Chess Champion 1886-1894, Austria-Hungary, USA</string>
     <string name="history_willam2">“Chess is not for the faint-hearted“</string>
 
@@ -66,6 +70,7 @@
 
     <string name="bonus_extra_text">The best chess books\n1. "Bobby Fischer teaches you how to play chess" - Robert Fischer\n2. "Chess game textbook" - Emanuel Lasker\n3. "My system" - Aron Nimzowitsch\n4. "Endgame Tutorial" - Mark Dvoretsky\n5. "My great predecessors" - Garry Kasparov\n\nGrandmaster`s advice\n1. In the opening, a chess player must develop all the pieces, fight for the center, castling\n2. In the middlegame, a chess player must make a plan (3-4 moves ahead) and follow it.\nBest plan: active play (pawn advances, regrouping of pieces and exchanges)\n3. In the endgame, the strength of the king increases\n\nThe best chess platforms on the Internet \nhttps://lichess.org/\nhttps://www.chess.com/\n</string>
     <string name="admin_radius_hint">500 m</string>
+    <string name="person_head_title_down">Statement about the chess of world champions.</string>
 
     <string-array name="spinnerItems">
         <item>500 m</item>

@@ -13,6 +13,7 @@ public class Place {
     public String category;
     public String logo;
     public boolean isVisited;
+    public Integer membersCnt;
 
     public static final String CATEGORY_CAFE = "cafe";
     public static final String CATEGORY_CLUB = "club";
@@ -22,7 +23,7 @@ public class Place {
     public Place(){
     }
 
-    public Place(String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
+    public Place(String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited, Integer membersCnt) {
         this.id = -1;
         this.clubName = clubName;
         this.address = address;
@@ -33,10 +34,11 @@ public class Place {
         this.logo = logo;
         this.isVisited = isVisited;
         this.info = info;
+        this.membersCnt = membersCnt;
     }
 
 
-    public Place(int id, String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited) {
+    public Place(int id, String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited, Integer membersCnt) {
         this.id = id;
         this.clubName = clubName;
         this.address = address;
@@ -47,6 +49,7 @@ public class Place {
         this.logo = logo;
         this.isVisited = isVisited;
         this.info = info;
+        this.membersCnt = membersCnt;
     }
 
     @Override
@@ -62,6 +65,7 @@ public class Place {
                 ", category='" + category + '\'' +
                 ", logo='" + logo + '\'' +
                 ", isVisited=" + isVisited +
+                ", membersCnt=" + membersCnt +
                 '}';
     }
 }
