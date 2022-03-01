@@ -56,7 +56,8 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     protected void onBindGameViewHolder(GameViewHolder holder, int position){
         int fixPosition = position - 1 ;
         Puzzle puzzle = this.puzzles.get(fixPosition);
-        GameViewHolder.onBindGameViewHolder(holder, puzzle);
+        GameViewHolder.onBindGameViewHolder(holder, puzzle, position);
+        holder.gameNameTextView.setText(puzzle.clubName);
     }
 
     protected void onBindPuzzlesInfoViewHolder(InfoViewHolder holder, int position){

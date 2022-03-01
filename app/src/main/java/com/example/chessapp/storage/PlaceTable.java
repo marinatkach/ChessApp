@@ -44,7 +44,7 @@ public class PlaceTable extends DBResourceManager<Place> {
         short isVisited = cursor.getShort(9);
         place.isVisited = isVisited != 0;
 
-        place.membersCnt = cursor.getInt(9);
+        place.membersCnt = cursor.getInt(10);
 
 
         return place;

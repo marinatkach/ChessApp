@@ -71,6 +71,7 @@
     <string name="bonus_extra_text">The best chess books\n1. "Bobby Fischer teaches you how to play chess" - Robert Fischer\n2. "Chess game textbook" - Emanuel Lasker\n3. "My system" - Aron Nimzowitsch\n4. "Endgame Tutorial" - Mark Dvoretsky\n5. "My great predecessors" - Garry Kasparov\n\nGrandmaster`s advice\n1. In the opening, a chess player must develop all the pieces, fight for the center, castling\n2. In the middlegame, a chess player must make a plan (3-4 moves ahead) and follow it.\nBest plan: active play (pawn advances, regrouping of pieces and exchanges)\n3. In the endgame, the strength of the king increases\n\nThe best chess platforms on the Internet \nhttps://lichess.org/\nhttps://www.chess.com/\n</string>
     <string name="admin_radius_hint">500 m</string>
     <string name="person_head_title_down">Statement about the chess of world champions.</string>
+    <string name="place_5_players">5 strongest chess players</string>
 
     <string-array name="spinnerItems">
         <item>500 m</item>

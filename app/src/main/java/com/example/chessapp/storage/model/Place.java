@@ -58,7 +58,7 @@ public class Place {
                 "id=" + id +
                 ", clubName='" + clubName + '\'' +
                 ", address='" + address + '\'' +
-                ", info='" + info + '\'' +
+                ", info='" + info.replace("\n", "\\n") + '\'' +
                 ", link='" + link + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +

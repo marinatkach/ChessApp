@@ -59,7 +59,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
 
         if(distance == null){
             placeDistance.setText("");
-            placeDistance.setVisibility(View.INVISIBLE);
+            placeDistance.setVisibility(View.GONE);
             placeDistance.setBackgroundColor(holder.itemView.getResources().getColor(R.color.distance_unknown));
             return;
         }

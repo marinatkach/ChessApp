@@ -38,7 +38,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public static void onBindGameViewHolder(GameViewHolder holder, Puzzle puzzle){
+    public static void onBindGameViewHolder(GameViewHolder holder, Puzzle puzzle, int position){
 
         // Set item views based on your views and data model
         TextView gameNameTextView = holder.gameNameTextView;
@@ -48,7 +48,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         TextView  gameInfoTextView = holder.gameInfoTextView;
         Button gameBntShowAnswer = holder.gameBntShowAnswer;
 
-        gameNameTextView.setText(puzzle.name);
+        gameNameTextView.setText("Game " + position);
         gamePlayerTextView.setText(puzzle.playerText);
         gameInfoTextView.setText(puzzle.gameInfo);
         AppHelpers.setImageOrDefault(gameImage, puzzle.image);
