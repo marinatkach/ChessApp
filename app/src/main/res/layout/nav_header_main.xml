@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round"
+        app:srcCompat="@drawable/main_icon"
         tools:layout_conversion_absoluteHeight="80dp"
         tools:layout_conversion_absoluteWidth="72dp" />
 

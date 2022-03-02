@@ -53,14 +53,14 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         gameInfoTextView.setText(puzzle.gameInfo);
         AppHelpers.setImageOrDefault(gameImage, puzzle.image);
 
-        gameAnswerTextView.setText(AppHelpers.hideString(puzzle.solution));
+        gameAnswerTextView.setText(AppHelpers.hideString("0000000000"));
 
         gameBntShowAnswer.setOnClickListener((view) -> {
             if(gameAnswerTextView.getText().toString().startsWith("***")){
                 gameAnswerTextView.setText(puzzle.solution);
                 gameBntShowAnswer.setText(R.string.bnt_hide_solution);
             }else {
-                gameAnswerTextView.setText(AppHelpers.hideString(puzzle.solution));
+                gameAnswerTextView.setText(AppHelpers.hideString("0000000000"));
                 gameBntShowAnswer.setText(R.string.bnt_open_solution);
             }
         });

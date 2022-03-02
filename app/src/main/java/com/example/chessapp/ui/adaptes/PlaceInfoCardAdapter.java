@@ -79,11 +79,18 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         clubNameDescriptionTextView.setText(place.clubName);
         cardDescriptionLink.setText(place.link);
 
+
+        if(place.link == null || place.link.equals("")){
+            cardDescriptionLink.setVisibility(View.GONE);
+        }
+
         if(place.info == null || place.info.equals("")){
             holder.table.setVisibility(View.GONE);
+            holder.place5StrText.setVisibility(View.GONE);
         }
         else {
             holder.table.setVisibility(View.VISIBLE);
+            holder.place5StrText.setVisibility(View.VISIBLE);
             fillTable(holder, place.info);
         }
         placeAdressText.setText(place.address);
@@ -93,17 +100,10 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             placeMembersText.setVisibility(View.GONE);
         }else {
             placeMembersText.setVisibility(View.VISIBLE); // to be sure =)
-            placeMembersText.setText(String.format("It has %s members", place.membersCnt));
+            placeMembersText.setText(String.format("%s members", place.membersCnt));
         }
 
-        if(puzzles.isEmpty())
-        {
-            holder.puzzlesText.setVisibility(View.GONE);
-        }
-        else
-        {
-            holder.puzzlesText.setVisibility(View.VISIBLE);
-        }
+
 
         AppHelpers.setImageOrDefault(clubImage, place.logo);
     }
@@ -134,7 +134,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
                     .map(String::trim)
                     .toArray(String[]::new);
 
-            String names = i + ". " + words[0]; // Firouzja, Alireza
+            String names = i + ". " + words[0].replace(",", ", "); // Firouzja, Alireza
             String points = words[1]; // 2804
 
             String grad = "";
@@ -188,7 +188,8 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         public TextView placeInfoText;
         public TextView placeAdressText;
         public TextView placeMembersText;
-        public TextView puzzlesText;
+        public TextView place5StrText;
+
         public ImageView clubImage;
         public TableLayout table;
 
@@ -239,9 +240,9 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
            clubNameDescriptionTextView = (TextView) itemView.findViewById(R.id.clubNameDescriptionTextView);
            cardDescriptionLink = (TextView) itemView.findViewById(R.id.cardDescrLinkTextView);
            clubImage = (ImageView) itemView.findViewById(R.id.clubImage);
-           puzzlesText = (TextView) itemView.findViewById(R.id.placeInfoPuzzlesTextView);
            placeAdressText = (TextView) itemView.findViewById(R.id.placeAddres);
            placeMembersText = (TextView) itemView.findViewById(R.id.clubMembers);
+           place5StrText = (TextView) itemView.findViewById(R.id.placeDescr5StrText);
             table = itemView.findViewById(R.id.placeTable);
 
             membersName1 = (TextView) itemView.findViewById(R.id.placeTableName1) ;

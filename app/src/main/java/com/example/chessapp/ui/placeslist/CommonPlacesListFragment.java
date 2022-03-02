@@ -27,8 +27,8 @@ public class CommonPlacesListFragment extends Fragment {
 
     private FragmentEmptyRecycleViewBinding binding;
 
-    private String category;
-    private int navigationAction;
+    private final String category;
+    private final int navigationAction;
 
     public CommonPlacesListFragment(String category, int navigationAction) {
         this.category = category;
@@ -56,7 +56,7 @@ public class CommonPlacesListFragment extends Fragment {
                 .collect(Collectors.toList());
 
         List<Pair<Place, Float>> placeDistances = utils.getDistances(placeList);
-
+        System.out.println("category: '" +   category + "'");
         System.out.println(Arrays.toString(placeDistances.toArray()));
 
         if(!placeDistances.isEmpty() && placeDistances.get(0).second != null){
@@ -76,6 +76,5 @@ public class CommonPlacesListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-        category = null;
     }
 }

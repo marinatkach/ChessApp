@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Puzzle> puzzles;
+    protected List<Puzzle> puzzles;
     private int infoTextId;
     private boolean printSuccessMessage = false;
 

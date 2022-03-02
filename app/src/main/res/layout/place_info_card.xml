@@ -40,9 +40,10 @@
             android:id="@+id/clubMembers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="10dp"
-            android:text="It has 102 members" />
+            android:gravity="center"
+            android:text="102 members"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/clubImage"
@@ -61,7 +62,7 @@
             android:text="pretium mas" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/placeDescr5StrText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -78,6 +79,7 @@
             android:layout_below="@+id/today_temp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:stretchColumns="0,1,2">
 
             <TableRow
@@ -266,19 +268,6 @@
             </TableRow>
 
         </TableLayout>
-
-        <TextView
-            android:id="@+id/placeInfoPuzzlesTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Puzzles"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:justificationMode="inter_word"
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 

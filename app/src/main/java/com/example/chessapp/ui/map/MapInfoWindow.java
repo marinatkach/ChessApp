@@ -41,6 +41,7 @@ public class MapInfoWindow extends MarkerInfoWindow {
         btn.setOnClickListener((view -> {
             Bundle bundle = new Bundle();
             bundle.putInt("placeId", place.id);
+            bundle.putBoolean("movedFromMap", true);
             Navigation.findNavController(mMapView).navigate(R.id.action_nav_map_to_place_description, bundle);
         }));
     }

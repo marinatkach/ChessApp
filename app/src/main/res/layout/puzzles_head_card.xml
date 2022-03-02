@@ -19,6 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:autoLink="web"
             android:text="@string/puzzles_head_information"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

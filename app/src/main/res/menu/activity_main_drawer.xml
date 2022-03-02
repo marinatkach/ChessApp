@@ -6,43 +6,43 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_welcome"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_map"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_map"
             android:title="@string/menu_map" />
         <item
             android:id="@+id/nav_clubs"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_club"
             android:title="@string/menu_clubs" />
         <item
             android:id="@+id/nav_cafes"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_cafe"
             android:title="@string/menu_cafes" />
         <item
             android:id="@+id/nav_outdoors"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_outdoor"
             android:title="@string/menu_outdoors" />
         <item
             android:id="@+id/nav_history"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_history"
             android:title="@string/menu_history" />
         <item
             android:id="@+id/nav_puzzles"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_puzzles"
             android:title="@string/menu_puzzles" />
         <item
             android:id="@+id/nav_gps"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_gps"
             android:title="@string/menu_gps" />
         <item
             android:id="@+id/nav_bonus"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_bonus"
             android:title="@string/menu_bonus" />
         <item
             android:id="@+id/nav_admin"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_admin"
             android:title="@string/menu_admin" />
     </group>
 </menu>

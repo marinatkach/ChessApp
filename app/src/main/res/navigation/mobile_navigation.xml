@@ -78,6 +78,19 @@
         android:name="com.example.chessapp.ui.placedesc.PlaceDescriptionFragment"
         android:label="@string/menu_place_description"
         tools:layout="@layout/fragment_empty_recycle_view"
-        />
+        >
+        <action
+            android:id="@+id/action_place_description_to_nav_outdoors"
+            app:destination="@id/nav_outdoors" />
+        <action
+            android:id="@+id/action_place_description_to_nav_cafes"
+            app:destination="@id/nav_cafes" />
+        <action
+            android:id="@+id/action_place_description_to_nav_clubs"
+            app:destination="@id/nav_clubs" />
+        <action
+            android:id="@+id/action_place_description_to_nav_map2"
+            app:destination="@id/nav_map" />
+    </fragment>
 
 </navigation>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcom_background"
+    android:background="@drawable/side_nav_bar"
     tools:context=".ui.home.HomeFragment">
 
     <TextView
@@ -15,6 +15,7 @@
         android:layout_marginEnd="24dp"
         android:text="@string/text_home_up"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +32,7 @@
         android:text="@string/text_home_bottom"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -42,7 +44,9 @@
         android:id="@+id/hello_center_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+        android:justificationMode="inter_word"
         android:text="@string/text_home_center"
         app:layout_constraintEnd_toEndOf="@+id/hello_up_text"
         app:layout_constraintHorizontal_bias="0.52"
