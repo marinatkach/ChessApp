@@ -9,26 +9,17 @@
 
     <TextView
         android:id="@+id/bubble_description"
-        android:layout_width="12dp"
-        android:layout_height="22dp"
+        android:layout_width="62dp"
+        android:layout_height="51dp"
         android:text="TextView"
-        android:visibility="gone"
         android:textSize="25dp"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <TextView
-        android:id="@+id/bubble_subdescription"
-        android:layout_width="76dp"
-        android:layout_height="75dp"
-        android:text="TextView"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="199dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +27,7 @@
 
         <ImageView
             android:id="@+id/bubble_image"
-            android:layout_width="198dp"
+            android:layout_width="229dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
@@ -44,36 +35,54 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout2"
             app:srcCompat="@drawable/speech_bubble" />
 
-        <ImageView
-            android:id="@+id/infoWindowImageBnt"
-            android:layout_width="45dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="50dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_info_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bubble_title"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/bubble_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:maxWidth="160dp"
-            android:text="text text text text text text text"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/bubble_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bubble_image" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/bubble_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:maxWidth="160dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="text text text text text text text"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/bubble_subdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="1 Grandmaster,\n1 International Master,\n3 FIDE Master"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/infoWindowImageBnt"
+                android:layout_width="45dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="60dp"
+                android:src="@drawable/ic_baseline_info_24" />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

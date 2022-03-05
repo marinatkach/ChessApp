@@ -28,7 +28,7 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0) return 0;
+        if(position == 0) return 2;
         if(printSuccessMessage && position == puzzles.size() + 1) return 0;
         return 1;
     }
@@ -44,6 +44,9 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         {
             View view = inflater.inflate(R.layout.puzzles_head_card, parent, false);
             return new InfoViewHolder(view);
+        }
+        else if(viewType == 2){
+            return new ColInfoViewHolder(inflater.inflate(R.layout.puzzles_head_card_2col, parent, false));
         }
         else {
             View view = inflater.inflate(R.layout.game_card, parent, false);
@@ -77,7 +80,7 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         {
             onBindPuzzlesInfoViewHolder((InfoViewHolder) holder, position);
         }
-        else{
+        else if(holder.getItemViewType() == 1){
             onBindGameViewHolder((GameViewHolder) holder, position);
         }
 
@@ -100,6 +103,14 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             infoNameTextView = (TextView) itemView.findViewById(R.id.puzzlesHeadInfoTextView);
         }
     }
+
+    public class ColInfoViewHolder extends RecyclerView.ViewHolder {
+
+        public ColInfoViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
 
 
 }

@@ -13,7 +13,7 @@ public class PlaceTable extends DBResourceManager<Place> {
 
 
     public PlaceTable(Context activity, String dbName) {
-        super(activity, dbName, "places", "CREATE TABLE places (_id INTEGER PRIMARY KEY AUTOINCREMENT, clubName TEXT NOT NULL, address TEXT NOT NULL, info TEXT NOT NULL, link TEXT NOT NULL, longitude Double NOT NULL, latitude Double NOT NULL, category TEXT NOT NULL, logo TEXT, isVisited INTEGER NOT NULL, members INTEGER)");
+        super(activity, dbName, "places", "CREATE TABLE places (_id INTEGER PRIMARY KEY AUTOINCREMENT, clubName TEXT NOT NULL, address TEXT NOT NULL, info TEXT NOT NULL, link TEXT NOT NULL, longitude Double NOT NULL, latitude Double NOT NULL, category TEXT NOT NULL, logo TEXT, isVisited INTEGER NOT NULL, members INTEGER, labels TEXT)");
     }
 
     @Override
@@ -45,6 +45,7 @@ public class PlaceTable extends DBResourceManager<Place> {
         place.isVisited = isVisited != 0;
 
         place.membersCnt = cursor.getInt(10);
+        place.labels = cursor.getString(11);
 
 
         return place;
@@ -62,6 +63,7 @@ public class PlaceTable extends DBResourceManager<Place> {
         daten.put("logo", obj.logo);
         daten.put("info", obj.info);
         daten.put("members", obj.membersCnt);
+        daten.put("labels", obj.labels);
 
         short isVisited = 0;
         if(obj.isVisited) isVisited = 1;

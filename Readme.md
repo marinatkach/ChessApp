@@ -32,6 +32,35 @@
 * [x] Map: заменить цвет иконок на более светлый
 * [x] History добавить всех чемпионов мира (17 штук) и описание, цитату сдвинуть после фото, добавить линию, разделющую ЧМ. В заголовке увеличить размер текста.
 
+### Update 
+
+* [x] popart -> add members
+    * cnt members type
+    * labels?
+
+* [x] bonus
+   * [x] add answers as image to bonus
+   * [x] текст центрировать наверху
+   * [x] каждое предложение отдельно (\n)
+
+* [x] history :
+    * [x] add \n
+    * [x] у топалова много ""
+
+* [x] puzzles
+    * description gm, em, fm  ...
+
+* [x] картинку вверху -> иконка
+* [x] текст в центре больше
+
+
+*  admin ->
+   [x] add check gps
+   [x] move login btn
+   [x] text -> change text
+   [] ok : asseption event (?)
+
+
 
 ### Поддержка
 

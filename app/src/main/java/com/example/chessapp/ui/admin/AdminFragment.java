@@ -38,14 +38,10 @@ public class AdminFragment extends Fragment {
             processLogout(binding);
         }
 
-        binding.adminLoginOutBtn.setOnClickListener(event ->{
+        binding.adminLoginBtn.setOnClickListener(event ->{
             String password = binding.adminPasswordEditText.getText().toString();
-            if(adminViewController.hasAdminAccess()) // logout
-            {
-                adminViewController.logout();
-                processLogout(binding);
-            }
-            else { // login
+            if(!adminViewController.hasAdminAccess()) // logout
+           { // login
                 boolean hasAccess = adminViewController.getAdminAccess(password);
                 if(hasAccess) {
                     processLogin(binding);
@@ -55,6 +51,26 @@ public class AdminFragment extends Fragment {
                     Toast toast = Toast.makeText(getContext(), R.string.wrong_password, duration);
                     toast.show();
                 }
+            }
+            else{
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(getContext(), "You are already Admin!", duration);
+                toast.show();
+            }
+        });
+
+
+        binding.adminLogoutBtn.setOnClickListener(event ->{
+            String password = binding.adminPasswordEditText.getText().toString();
+            if(adminViewController.hasAdminAccess()) // logout
+            {
+                adminViewController.logout();
+                processLogout(binding);
+            }
+            else { // login
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(getContext(), "You are already logged out!", duration);
+                toast.show();
             }
         });
 
@@ -95,7 +111,10 @@ public class AdminFragment extends Fragment {
 
     private void processLogin(FragmentAdminBinding binding){
         Log.i("Admin","Process Login");
-        binding.adminLoginOutBtn.setText(R.string.bnt_admin_logout);
+
+        binding.adminLoginBtn.setVisibility(View.GONE);
+        binding.adminLogoutBtn.setVisibility(View.VISIBLE);
+
 
         InputMethodManager imm = (InputMethodManager)  this.getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getActivity().getWindow().getDecorView().getWindowToken(), 0);
@@ -129,7 +148,9 @@ public class AdminFragment extends Fragment {
 
     private void processLogout(FragmentAdminBinding binding){
         Log.i("Admin","Process Logout");
-        binding.adminLoginOutBtn.setText(R.string.bnt_admin_login);
+
+        binding.adminLoginBtn.setVisibility(View.VISIBLE);
+        binding.adminLogoutBtn.setVisibility(View.GONE);
 
         EditText passwordInput = binding.adminPasswordEditText;
 

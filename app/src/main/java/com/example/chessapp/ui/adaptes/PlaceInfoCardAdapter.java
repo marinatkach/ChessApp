@@ -72,6 +72,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         TextView placeInfoText = holder.placeInfoText;
         TextView placeAdressText = holder.placeAdressText;
         TextView placeMembersText = holder.placeMembersText;
+        TextView membersDescriptionInfo = holder.membersDescriptionInfo;
 
         ImageView clubImage = holder.clubImage;
 
@@ -79,6 +80,11 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         clubNameDescriptionTextView.setText(place.clubName);
         cardDescriptionLink.setText(place.link);
 
+        if(place.category.equals(Place.CATEGORY_CLUB) && !place.labels.equals("")){
+            membersDescriptionInfo.setText(place.labels.replace("\n", ", "));
+        }else{
+            membersDescriptionInfo.setVisibility(View.GONE);
+        }
 
         if(place.link == null || place.link.equals("")){
             cardDescriptionLink.setVisibility(View.GONE);
@@ -189,6 +195,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         public TextView placeAdressText;
         public TextView placeMembersText;
         public TextView place5StrText;
+        public TextView membersDescriptionInfo;
 
         public ImageView clubImage;
         public TableLayout table;
@@ -243,6 +250,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
            placeAdressText = (TextView) itemView.findViewById(R.id.placeAddres);
            placeMembersText = (TextView) itemView.findViewById(R.id.clubMembers);
            place5StrText = (TextView) itemView.findViewById(R.id.placeDescr5StrText);
+            membersDescriptionInfo = (TextView) itemView.findViewById(R.id.titlesCntTextView);
             table = itemView.findViewById(R.id.placeTable);
 
             membersName1 = (TextView) itemView.findViewById(R.id.placeTableName1) ;

@@ -9,90 +9,81 @@
     android:elevation="8dp"
     android:foregroundTint="#EA0C0C">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/gameNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="15dp"
             android:text="Schachklub Germering e.V."
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/gameImage"
-            android:layout_width="357dp"
-            android:layout_height="312dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintDimensionRatio="w,1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gameNameTextView"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <Button
-            android:id="@+id/gameBntShowAnswer"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/bnt_open_solution"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gameInfoTextView" />
-
-        <TextView
-            android:id="@+id/gameAnswerTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#EBEDB2"
-            android:gravity="center"
-            android:minHeight="38dp"
-            android:text="1.e4 e5 2.Kf3 Kf6"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gameBntShowAnswer" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/gamePlayerNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Ivanov - Petrov, 2010"
-            android:textSize="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/gameImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gameNameTextView"
-            app:layout_constraintVertical_bias="0.69" />
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/gameImage"
+            android:layout_width="357dp"
+            android:layout_height="312dp"
+            android:layout_marginTop="10dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/gameInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:text="text"
-            android:textSize="18dp"
             android:textColor="@color/black"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gameImage" />
+            android:textSize="18dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/gameBntShowAnswer"
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:text="@string/bnt_open_solution" />
+
+        <TextView
+            android:id="@+id/gameAnswerTextView"
+            android:layout_width="262dp"
+            android:layout_height="wrap_content"
+            android:background="#EBEDB2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:gravity="center"
+            android:text="1.e4 e5 2.Kf3 Kf6"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <ImageView
+            android:id="@+id/gameAnswerImage"
+            android:layout_width="match_parent"
+            android:layout_height="312dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="15dp"
+            tools:srcCompat="@drawable/raedler" />
+
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>

@@ -1,8 +1,10 @@
 package com.example.chessapp.ui.map;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.navigation.Navigation;
 
@@ -34,6 +36,21 @@ public class MapInfoWindow extends MarkerInfoWindow {
 
 //        TextView text  = (TextView) mView.findViewById(R.id.infoWindowTextView);
         mView.findViewById(R.id.bubble_image).setVisibility(View.VISIBLE);
+
+        TextView descr = mView.findViewById(R.id.bubble_subdescription);
+
+        if(place.labels == null || place.labels.equals("")){
+            descr.setVisibility(View.GONE);
+        }
+        else{
+            descr.setVisibility(View.VISIBLE);
+            descr.setText(place.labels);
+            if(!place.labels.contains("\n")){
+                descr.setGravity(Gravity.CENTER);
+            }
+        }
+
+
 
         ImageView btn = (ImageView) mView.findViewById(R.id.infoWindowImageBnt);
 //        text.setText(marker.getTitle());

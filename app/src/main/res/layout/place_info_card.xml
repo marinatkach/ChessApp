@@ -45,6 +45,15 @@
             android:text="102 members"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/titlesCntTextView"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
         <ImageView
             android:id="@+id/clubImage"
             android:layout_width="match_parent"

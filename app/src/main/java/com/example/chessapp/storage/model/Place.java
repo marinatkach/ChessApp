@@ -7,6 +7,7 @@ public class Place {
     public String clubName;
     public String address;
     public String info;
+    public String labels;
     public String link;
     public Double longitude;
     public Double latitude;
@@ -23,7 +24,7 @@ public class Place {
     public Place(){
     }
 
-    public Place(String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited, Integer membersCnt) {
+    public Place(String clubName, String address, String info, String labels,  String link, Double longitude, Double latitude, String category, String logo, boolean isVisited, Integer membersCnt) {
         this.id = -1;
         this.clubName = clubName;
         this.address = address;
@@ -35,10 +36,11 @@ public class Place {
         this.isVisited = isVisited;
         this.info = info;
         this.membersCnt = membersCnt;
+        this.labels = labels;
     }
 
 
-    public Place(int id, String clubName, String address, String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited, Integer membersCnt) {
+    public Place(int id, String clubName, String address,  String labels,  String info, String link, Double longitude, Double latitude, String category, String logo, boolean isVisited, Integer membersCnt) {
         this.id = id;
         this.clubName = clubName;
         this.address = address;
@@ -50,6 +52,7 @@ public class Place {
         this.isVisited = isVisited;
         this.info = info;
         this.membersCnt = membersCnt;
+        this.labels = labels;
     }
 
     @Override
@@ -58,7 +61,8 @@ public class Place {
                 "id=" + id +
                 ", clubName='" + clubName + '\'' +
                 ", address='" + address + '\'' +
-                ", info='" + info.replace("\n", "\\n") + '\'' +
+                ", info='" + info + '\'' +
+                ", labels='" + labels + '\'' +
                 ", link='" + link + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +

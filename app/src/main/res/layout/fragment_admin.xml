@@ -44,14 +44,24 @@
         app:layout_constraintTop_toBottomOf="@+id/adminPasswordEditText" />
 
     <Button
-        android:id="@+id/adminLoginOutBtn"
+        android:id="@+id/adminLogoutBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Login"
+        android:text="@string/bnt_admin_logout"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/adminAccessTextView" />
+
+    <Button
+        android:id="@+id/adminLoginBtn"
+        android:layout_width="56dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:drawableBottom="@drawable/ic_login"
+        app:layout_constraintBottom_toBottomOf="@+id/adminPasswordEditText"
+        app:layout_constraintStart_toEndOf="@+id/adminPasswordEditText"
+        app:layout_constraintTop_toTopOf="@+id/adminPasswordEditText" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -69,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminLoginOutBtn"
+        app:layout_constraintTop_toBottomOf="@+id/adminLogoutBtn"
         app:layout_constraintVertical_bias="0.47000003">
 
         <Button
