@@ -18,11 +18,6 @@ public class PersonTable extends DBResourceManager<Person> {
     }
 
     @Override
-    protected int getKey(Person obj) {
-        return obj.id;
-    }
-
-    @Override
     protected Person createDataFromCursor(Cursor cursor) {
         Person person = new Person();
         person.id = cursor.getInt(0);

@@ -1,10 +1,16 @@
 package com.example.chessapp.storage.model;
 
-public class UserState {
+public class UserState implements DBEntry {
     public int id;
-    public String accessPassword = "123456";
-    public String accessType = "Admin";
-    public boolean hasAccess = false;
+    public String accessPassword = "1234"; // expected password
+    public String accessType = "Admin"; // type
+    public boolean hasAccess = false;  // if true -> has current user has admin access
+
+
+    @Override
+    public int getId() {
+        return id;
+    }
 
 
     public UserState() {

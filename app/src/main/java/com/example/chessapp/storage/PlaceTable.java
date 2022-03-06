@@ -16,11 +16,6 @@ public class PlaceTable extends DBResourceManager<Place> {
         super(activity, dbName, "places", "CREATE TABLE places (_id INTEGER PRIMARY KEY AUTOINCREMENT, clubName TEXT NOT NULL, address TEXT NOT NULL, info TEXT NOT NULL, link TEXT NOT NULL, longitude Double NOT NULL, latitude Double NOT NULL, category TEXT NOT NULL, logo TEXT, isVisited INTEGER NOT NULL, members INTEGER, labels TEXT)");
     }
 
-    @Override
-    protected int getKey(Place obj) {
-        return obj.id;
-    }
-
     public List<Place> getPlacesByVisitedState(boolean isVisited){
         return all().stream().filter(it -> it.isVisited == isVisited).collect(Collectors.toList());
     }

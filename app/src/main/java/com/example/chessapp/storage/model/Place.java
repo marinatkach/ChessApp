@@ -1,24 +1,28 @@
 package com.example.chessapp.storage.model;
 
-import java.util.Objects;
 
-public class Place {
+public class Place implements DBEntry {
     public int id;
     public String clubName;
     public String address;
-    public String info;
-    public String labels;
+    public String info; // GM info (table), row split by '\n', columns by ';', example "Firouzja, Alireza ;2804 ; GM \n Eljanov, Pavel ;2683 ; GM \n Saric, Ivan ;2678 ; GM \n Jones, Gawain ;2671 ; GM\n Indjic, Aleksandar ;2604 ; GM"
+    public String labels; // additional info for map and sescription (club -> cnt titel members, cafe -> short description)
     public String link;
     public Double longitude;
     public Double latitude;
-    public String category;
-    public String logo;
+    public String category; // cafe, club, outdoor
+    public String logo; // name of image with lolo from drawable
     public boolean isVisited;
     public Integer membersCnt;
 
     public static final String CATEGORY_CAFE = "cafe";
     public static final String CATEGORY_CLUB = "club";
     public static final String CATEGORY_OUTDOOR = "outdoor";
+
+    @Override
+    public int getId() {
+        return id;
+    }
 
 
     public Place(){

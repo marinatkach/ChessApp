@@ -1,14 +1,21 @@
 package com.example.chessapp.storage.model;
 
-public class Puzzle {
+public class Puzzle implements DBEntry {
     public int id;
     public String name;
     public String solution;
     public String clubName;
-    public String playerText;
-    public String gameInfo;
-    public boolean isPublic = true;
-    public String image;
+    public String playerText; // NN - NN
+    public String gameInfo; // white to move, win
+    public boolean isPublic = true; // if false -> bonus , else -> normal
+    public String image; // name of file with image of game
+
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
 
     public Puzzle() {
     }

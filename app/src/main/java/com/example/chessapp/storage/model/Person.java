@@ -1,12 +1,17 @@
 package com.example.chessapp.storage.model;
 
-public class Person {
+public class Person implements DBEntry {
     public int id;
-    public String name;
-    public String info;
+    public String name; // person name
+    public String info; // info text
     public String citate;
-    public String image;
+    public String image; // name of image in drawable
 
+
+    @Override
+    public int getId() {
+        return id;
+    }
 
     public Person(){
     }

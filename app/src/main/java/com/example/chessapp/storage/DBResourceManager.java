@@ -7,18 +7,24 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.chessapp.storage.model.DBEntry;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements ResourceManager<T> {
-    protected SQLiteDatabase db;
-    private String tableName;
-    private String dbName;
-    private String sql;
+public abstract class DBResourceManager<T extends DBEntry> extends SQLiteOpenHelper implements ResourceManager<T> {
+    protected SQLiteDatabase db; // DB object
+    private String tableName; // table name in DB
+    private String dbName; // data base name (like 'db123')
+    private String sql; // sql query to create table
 
-    protected abstract int getKey(T obj);
-    protected abstract T createDataFromCursor(Cursor cursor);
-    protected abstract ContentValues createContextValuesFromObj(T obj);
+    protected int getKey(T obj){
+        return obj.getId();
+    };
+
+
+    protected abstract T createDataFromCursor(Cursor cursor); // to get data from db
+    protected abstract ContentValues createContextValuesFromObj(T obj); // to save data to db
 
     public String getTableName() {
         return tableName;
@@ -98,7 +104,7 @@ public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements R
         }
         return ergebnis;
     }
-//
+
     @Override
     public T update(T obj) {
             ContentValues daten = createContextValuesFromObj(obj);
@@ -120,7 +126,6 @@ public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements R
             return removeByKey(getKey(obj));
     }
 
-    // todo rewrite !!
     @Override
     public T get(int key) {
         for (T t : all()) {
@@ -129,7 +134,6 @@ public abstract class DBResourceManager<T> extends SQLiteOpenHelper implements R
             }
         }
         return null;
-        //return all().stream().filter(it -> key == getKey(it)).findFirst().orElse(null);
     }
 
     @Override

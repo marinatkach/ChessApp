@@ -15,10 +15,7 @@ public class PuzzlesTable extends DBResourceManager<Puzzle> {
         super(activity, dbName, "puzzles", "CREATE TABLE puzzles ( _id INTEGER PRIMARY KEY AUTOINCREMENT,  name TEXT NOT NULL,  solution TEXT NOT NULL,  clubName TEXT, playerNames TEXT NOT NULL,  gameInfo TEXT NOT NULL,  isPublic INTEGER NOT NULL,  image TEXT NOT NULL )\n");
     }
 
-    @Override
-    protected int getKey(Puzzle obj) {
-        return obj.id;
-    }
+
 
     public List<Puzzle> findPuzzlesByClubName(String clubName){
         return all().stream().filter(it -> it.clubName.equals(clubName)).collect(Collectors.toList());
