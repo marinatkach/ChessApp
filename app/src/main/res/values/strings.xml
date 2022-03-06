@@ -33,7 +33,7 @@
     <string name="bnt_admin_show_clubs">All Clubs</string>
     <string name="bnt_admin_show_outdoors">All Outdoors</string>
     <string name="bnt_admin_show_cafes">All Cafes</string>
-    <string name="bnt_admin_reset_all">Reset All</string>
+    <string name="bnt_admin_reset_all">Clear All</string>
     <string name="bnt_admin_reset_radius">Select Radius</string>
     <string name="bnt_admin_logout">Logout</string>
     <string name="bnt_admin_login">Login</string>

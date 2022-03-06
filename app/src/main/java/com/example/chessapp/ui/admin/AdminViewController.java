@@ -78,7 +78,7 @@ public class AdminViewController  {
         boolean isKm = true;
 
         if(text.equals("")){
-            printMessageToast("Error: Empty input!");
+            printMessageToast("Please Enter Radius!");
             return;
         }
 

@@ -13,8 +13,19 @@ import java.util.stream.Collectors;
 
 public class BonusCardsAdapter extends PuzzlesCardsAdapter {
 
+
+    boolean isAllPlaceFound = false;
+
     public BonusCardsAdapter(List<Puzzle> puzzles, int infoTextId, boolean isAlLPlacesFound) {
         super(puzzles, infoTextId, isAlLPlacesFound);
+        this.isAllPlaceFound = isAlLPlacesFound;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(position == 0) return 0;
+        if(isAllPlaceFound && position == puzzles.size() + 1) return 0;
+        return 1;
     }
 
     @Override
