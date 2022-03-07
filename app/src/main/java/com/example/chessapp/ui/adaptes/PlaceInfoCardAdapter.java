@@ -16,8 +16,7 @@ import com.example.chessapp.helpers.AppHelpers;
 import com.example.chessapp.storage.model.Place;
 import com.example.chessapp.storage.model.Puzzle;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +24,8 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private Place place;
     private List<Puzzle> puzzles;
+    protected List<Boolean> isOpen = new ArrayList<>();
+
 
     public PlaceInfoCardAdapter(Place place,  List<Puzzle> puzzles) {
         this.place = place;
@@ -47,7 +48,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         if(viewType == 0) // place info
         {
             View view = inflater.inflate(R.layout.place_info_card, parent, false);
-            return new PlaceViewHolder(view);
+            return new PlaceInfoViewHolder(view);
         }
         else {
             View view = inflater.inflate(R.layout.game_card, parent, false);
@@ -60,10 +61,10 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     private void onBindGameViewHolder(GameViewHolder holder, int position){
         int fixPosition = position - 1 ;
         Puzzle puzzle = this.puzzles.get(fixPosition);
-        GameViewHolder.onBindGameViewHolder(holder, puzzle, position);
+        GameViewHolder.onBindGameViewHolder(holder, puzzle, position, isOpen);
     }
 
-    private void onBindPlaceInfoViewHolder(PlaceViewHolder holder, int position){
+    private void onBindPlaceInfoViewHolder(PlaceInfoViewHolder holder, int position){
         // Get the data model based on position
         // Set item views based on your views and data model
 
@@ -122,7 +123,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         4. Jones, Gawain 	  	2671 	GM
         5. Indjic, Aleksandar 	  	2604 	GM
      */
-    private String fillTable(PlaceViewHolder holder, String sourceInfo){
+    private String fillTable(PlaceInfoViewHolder holder, String sourceInfo){
 
         Integer minSpaceCnt = 5;
         Integer maxLen = 22;
@@ -172,7 +173,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         if(holder.getItemViewType() == 0 )
         {
-            onBindPlaceInfoViewHolder((PlaceViewHolder) holder, position);
+            onBindPlaceInfoViewHolder((PlaceInfoViewHolder) holder, position);
         }
         else{
             onBindGameViewHolder((GameViewHolder) holder, position);
@@ -186,7 +187,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
 
-    public class PlaceViewHolder extends RecyclerView.ViewHolder {
+    public class PlaceInfoViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView clubNameDescriptionTextView;
@@ -239,7 +240,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
-        public PlaceViewHolder(View itemView) {
+        public PlaceInfoViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);

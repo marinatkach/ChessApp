@@ -1,5 +1,6 @@
 package com.example.chessapp.ui.adaptes;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chessapp.R;
 import com.example.chessapp.helpers.AppHelpers;
 import com.example.chessapp.storage.model.Puzzle;
+
+import java.util.List;
 
 public class GameViewHolder extends RecyclerView.ViewHolder {
 
@@ -37,11 +40,11 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         this.gamePlayerTextView = (TextView) itemView.findViewById(R.id.gamePlayerNameTextView);
         this.gameInfoTextView = (TextView) itemView.findViewById(R.id.gameInfoTextView);
         this.gameAnswerImage = (ImageView) itemView.findViewById(R.id.gameAnswerImage);
-
+        setIsRecyclable(false);
     }
 
 
-    public static void onBindGameViewHolder(GameViewHolder holder, Puzzle puzzle, int position){
+    public static void onBindGameViewHolder(GameViewHolder holder, Puzzle puzzle, int position, List<Boolean> isOpenList){
 
         // Set item views based on your views and data model
         TextView gameNameTextView = holder.gameNameTextView;
@@ -56,15 +59,26 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
         gameInfoTextView.setText(puzzle.gameInfo);
         AppHelpers.setImageOrDefault(gameImage, puzzle.image);
 
-        gameAnswerTextView.setText(AppHelpers.hideString("0000000000"));
+        Boolean isOpenValue = isOpenList.get(position -1);
+
+        if(isOpenValue) {
+            gameAnswerTextView.setText(puzzle.solution);
+            gameBntShowAnswer.setText(R.string.bnt_hide_solution);
+        }
+        else {
+            gameAnswerTextView.setText(AppHelpers.hideString("0000000000"));
+            gameBntShowAnswer.setText(R.string.bnt_open_solution);
+        }
 
         gameBntShowAnswer.setOnClickListener((view) -> {
             if(gameAnswerTextView.getText().toString().startsWith("***")){
                 gameAnswerTextView.setText(puzzle.solution);
                 gameBntShowAnswer.setText(R.string.bnt_hide_solution);
+                isOpenList.set(position -1, true);
             }else {
                 gameAnswerTextView.setText(AppHelpers.hideString("0000000000"));
                 gameBntShowAnswer.setText(R.string.bnt_open_solution);
+                isOpenList.set(position -1, false);
             }
         });
     }

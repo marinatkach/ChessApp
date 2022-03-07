@@ -33,8 +33,6 @@ public class MapInfoWindow extends MarkerInfoWindow {
 
         Marker marker = (Marker)arg0;
 
-
-//        TextView text  = (TextView) mView.findViewById(R.id.infoWindowTextView);
         mView.findViewById(R.id.bubble_image).setVisibility(View.VISIBLE);
 
         TextView descr = mView.findViewById(R.id.bubble_subdescription);
@@ -53,8 +51,6 @@ public class MapInfoWindow extends MarkerInfoWindow {
 
 
         ImageView btn = (ImageView) mView.findViewById(R.id.infoWindowImageBnt);
-//        text.setText(marker.getTitle());
-//
         btn.setOnClickListener((view -> {
             Bundle bundle = new Bundle();
             bundle.putInt("placeId", place.id);
@@ -62,10 +58,4 @@ public class MapInfoWindow extends MarkerInfoWindow {
             Navigation.findNavController(mMapView).navigate(R.id.action_nav_map_to_place_description, bundle);
         }));
     }
-
-
-
-
-
-
 }

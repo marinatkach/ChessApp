@@ -48,15 +48,24 @@ public class BonusCardsAdapter extends PuzzlesCardsAdapter {
 
         AppHelpers.setImageOrDefault(holder.gameAnswerImage, imageName);
 
+        if(super.isOpen.get(position -1)){
+            holder.gameAnswerImage.setVisibility(View.VISIBLE);
+        }else {
+            holder.gameAnswerImage.setVisibility(View.GONE);
+        }
+
+
         holder.gameBntShowAnswer.setOnClickListener( e -> {
             if(holder.gameAnswerTextView.getText().toString().startsWith("***")){
                 holder.gameAnswerTextView.setText(puzzle.solution);
                 holder.gameBntShowAnswer.setText(R.string.bnt_hide_solution);
                 holder.gameAnswerImage.setVisibility(View.VISIBLE);
+                super.isOpen.set(position -1, true);
             }else {
                 holder.gameAnswerTextView.setText(AppHelpers.hideString("0000000000"));
                 holder.gameBntShowAnswer.setText(R.string.bnt_open_solution);
                 holder.gameAnswerImage.setVisibility(View.GONE);
+                super.isOpen.set(position -1, true);
             }
         });
 

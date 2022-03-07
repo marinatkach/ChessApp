@@ -1,6 +1,7 @@
 package com.example.chessapp.ui.adaptes;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chessapp.R;
 import com.example.chessapp.storage.model.Puzzle;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     protected List<Puzzle> puzzles;
+    protected List<Boolean> isOpen = new ArrayList<>();
     private int infoTextId;
     private boolean printSuccessMessage = false;
 
@@ -24,6 +28,8 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.puzzles = puzzles;
         this.infoTextId = infoTextId;
         this.printSuccessMessage = printSuccessMessage;
+        puzzles.forEach(i -> isOpen.add(false));
+//        setHasStableIds(true);
     }
 
     @Override
@@ -33,13 +39,18 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return 1;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-
+        Log.i("Info", "Created "+ viewType);
         if(viewType == 0) // puzzles info
         {
             View view = inflater.inflate(R.layout.puzzles_head_card, parent, false);
@@ -59,7 +70,11 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     protected void onBindGameViewHolder(GameViewHolder holder, int position){
         int fixPosition = position - 1 ;
         Puzzle puzzle = this.puzzles.get(fixPosition);
-        GameViewHolder.onBindGameViewHolder(holder, puzzle, position);
+
+        Log.i("Info", "isOpen "+ Arrays.toString(isOpen.toArray()));
+        Log.i("Info", "isOpen "+ isOpen.get(position -1));
+
+        GameViewHolder.onBindGameViewHolder(holder, puzzle, position, isOpen);
         holder.gameNameTextView.setText(puzzle.clubName);
     }
 

@@ -1,7 +1,6 @@
 package com.example.chessapp.ui.placeslist;
 
 import android.content.Context;
-import android.location.Location;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -15,12 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chessapp.Application;
 import com.example.chessapp.R;
-import com.example.chessapp.helpers.GpsUtils;
 import com.example.chessapp.storage.model.Place;
 
 import java.util.List;
 
-public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.ViewHolder> {
+public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.PlaceCardViewHolder> {
 
     private List<Pair<Place, Float>>  places;
     private final int onClickNavigationAction;
@@ -32,7 +30,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlaceCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -40,12 +38,12 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
         View contactView = inflater.inflate(R.layout.place_card, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        PlaceCardViewHolder viewHolder = new PlaceCardViewHolder(contactView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PlaceCardViewHolder holder, int position) {
         // Get the data model based on position
         Place contact = places.get(position).first;
         holder.addOnClickEvent(contact.id);
@@ -92,7 +90,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
+    public class PlaceCardViewHolder extends RecyclerView.ViewHolder  {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView nameTextView;
@@ -100,7 +98,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.View
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
-        public ViewHolder(View itemView) {
+        public PlaceCardViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
