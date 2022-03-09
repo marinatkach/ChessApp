@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Application.init(this, false, false); // init db
-        Application.printAllTables();
+        Application.printAllTables(); // print tables
         Application.checkDb();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
 
+        // setup sidebar navigation
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

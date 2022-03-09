@@ -9,6 +9,10 @@ import com.example.chessapp.storage.model.Puzzle;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Class to get and read data from puzzle table
+ */
 public class PuzzlesTable extends DBResourceManager<Puzzle> {
 
     public PuzzlesTable(Context activity, String dbName) {

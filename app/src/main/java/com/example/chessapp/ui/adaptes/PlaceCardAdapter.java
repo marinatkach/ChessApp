@@ -1,4 +1,4 @@
-package com.example.chessapp.ui.placeslist;
+package com.example.chessapp.ui.adaptes;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.example.chessapp.storage.model.Place;
 
 import java.util.List;
 
+// print card with place name and distance from current location
 public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.PlaceCardViewHolder> {
 
     private List<Pair<Place, Float>>  places;
@@ -55,6 +56,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.Plac
 
         Float distance = places.get(position).second;
 
+        // if distance is null (gps is disabled) -> hide distance textview
         if(distance == null){
             placeDistance.setText("");
             placeDistance.setVisibility(View.GONE);
@@ -90,17 +92,14 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.Plac
     }
 
 
+    /**
+     * contains info of place card
+     */
     public class PlaceCardViewHolder extends RecyclerView.ViewHolder  {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
         public TextView nameTextView;
         public TextView distanceTextView;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public PlaceCardViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.clubNameTextView);

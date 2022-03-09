@@ -44,18 +44,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
+/**
+ * Utils to activate gps and get current location
+ */
 public class GpsUtils {
-    private Context context;
-    private SettingsClient mSettingsClient;
-    private LocationSettingsRequest mLocationSettingsRequest;
-    private LocationManager locationManager;
-    private LocationRequest locationRequest;
+    private final Context context;
+    private final SettingsClient mSettingsClient;
+    private final LocationSettingsRequest mLocationSettingsRequest;
+    private final LocationManager locationManager;
 
     public GpsUtils(Context context) {
         this.context = context;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         mSettingsClient = LocationServices.getSettingsClient(context);
-        locationRequest = LocationRequest.create();
+        LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(10 * 1000);
         locationRequest.setFastestInterval(2 * 1000);
@@ -67,11 +69,16 @@ public class GpsUtils {
         //**************************
     }
 
+
     public LocationManager getLocationManager(){
         return locationManager;
     }
 
-    // method for turn on GPS
+
+    /**
+     *  method for turn on GPS
+     * @param onGpsListener
+     */
     public void turnGPSOn(onGpsListener onGpsListener) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             if (onGpsListener != null) {
@@ -122,8 +129,39 @@ public class GpsUtils {
     }
 
 
+    /**
+     * listener without any logic
+     * @return
+     */
+    private LocationListener emptyLocationListener(){
+        return new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {  }
+
+            @Override
+            public void onLocationChanged(@NonNull List<Location> locations) { }
+
+            @Override
+            public void onFlushComplete(int requestCode) { }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) { }
+
+            @Override
+            public void onProviderEnabled(@NonNull String provider) { }
+
+            @Override
+            public void onProviderDisabled(@NonNull String provider) { }
+        };
+    }
+
+    /**
+     * return last known location from gps of network
+     * @return
+     */
     public Location getLastKnowLocation() {
 
+        // check permissions
         if (
                 ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -131,47 +169,14 @@ public class GpsUtils {
             return null;
         }
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 1.0f, new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {  }
+        // initiate request to get first location from gps
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 1.0f, emptyLocationListener());
 
-            @Override
-            public void onLocationChanged(@NonNull List<Location> locations) { }
-
-            @Override
-            public void onFlushComplete(int requestCode) { }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) { }
-
-            @Override
-            public void onProviderEnabled(@NonNull String provider) { }
-
-            @Override
-            public void onProviderDisabled(@NonNull String provider) { }
-        });
-
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000L, 1.0f, new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {  }
-
-            @Override
-            public void onLocationChanged(@NonNull List<Location> locations) { }
-
-            @Override
-            public void onFlushComplete(int requestCode) { }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) { }
-
-            @Override
-            public void onProviderEnabled(@NonNull String provider) { }
-
-            @Override
-            public void onProviderDisabled(@NonNull String provider) { }
-        });
+        // initiate request to get first location from network
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000L, 1.0f, emptyLocationListener());
 
 
+        // read all last read coordinates from all provides (gps and network), and get the best by accuracy
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
         for (String provider : providers) {
@@ -188,7 +193,11 @@ public class GpsUtils {
     }
 
 
-
+    /**
+     * get location from place
+     * @param place
+     * @return
+     */
     public static Location placeToLocation(Place place){
         Location placeLocation = new Location("");
         placeLocation.setLatitude(place.latitude);
@@ -196,6 +205,12 @@ public class GpsUtils {
         return placeLocation;
     }
 
+
+    /**
+     * return distances from current location to all places
+     * @param places
+     * @return
+     */
     public List<Pair<Place, Float>> getDistances(List<Place> places)
     {
         Location currentLocation = getLastKnowLocation();

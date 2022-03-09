@@ -6,6 +6,10 @@ import android.database.Cursor;
 
 import com.example.chessapp.storage.model.UserState;
 
+
+/**
+ * Class to get and read data from user state table
+ */
 public class UserStateTable extends DBResourceManager<UserState> {
 
 

@@ -22,26 +22,38 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Contains App constants and DB tables
+ */
 public class Application {
     public static PlaceTable placeTable = null;
     public static PuzzlesTable puzzlesTable = null;
     public static UserStateTable stateTable = null;
     public static PersonTable personTable = null;
-    public static final String DB_NAME = "db2206";
+    public static final String DB_NAME = "db2206"; // name of db
 
-    public static final int DISTANCE_METERS = 1000;
-    public static final int DISTANCE_TO_ADD_TO_VISITED_METES = 100;
+    public static final int DISTANCE_METERS = 1000; // distance to change color of icon in a map
+    public static final int DISTANCE_TO_ADD_TO_VISITED_METES = 100; // distance to place to mark it as visited
 
-    public static final int DISTANCE_TO_PLACE_NEAR_METERS = 200;
-    public static final int DISTANCE_TO_PLACE_MIDDLE_METERS = 700;
+    public static final int DISTANCE_TO_PLACE_NEAR_METERS = 200; // change color of distance textview to distance_near
+    public static final int DISTANCE_TO_PLACE_MIDDLE_METERS = 700; // change color of distance textview to distance_middle
 
 
+    /**
+     * return user data
+     * @return
+     */
     public static UserState getCurrentUserState(){
         return stateTable.all().get(0);
     }
 
 
-    // todo: if db not exists -> recreate()
+    /**
+     * init and fill db
+     * @param context
+     * @param clearAndFill if true -> remove all records and create new
+     * @param recreate --> if true -> drop all tables and recreate
+     */
     public static void init(Context context, boolean clearAndFill, boolean recreate){
         puzzlesTable = new PuzzlesTable(context, DB_NAME);
         placeTable = new PlaceTable(context, DB_NAME);
@@ -64,6 +76,9 @@ public class Application {
     }
 
 
+    /**
+     * fill Db with a data
+     */
     private static void fillDB(){
         if(puzzlesTable.all().isEmpty()){
             Puzzle[] arr = new Puzzle[]
@@ -322,7 +337,9 @@ public class Application {
         }
     }
 
-
+    /**
+     * find an error in data
+     */
     public static void checkDb(){
 
         for (Place place : placeTable.all()) {
@@ -345,6 +362,9 @@ public class Application {
 
     }
 
+    /**
+     * Print all tables in console
+     */
     public static void printAllTables(){
         Log.i("DB", "-----------------------------------");
         printTable(placeTable);
@@ -357,6 +377,10 @@ public class Application {
         Log.i("DB", "-----------------------------------");
     }
 
+    /**
+     * print one table in console
+     * @param table
+     */
     public static void printTable(DBResourceManager<?> table){
         Log.i("DB", "Table Name :" +  table.getTableName());
         Log.i("DB", "Size:" +  table.all().size());

@@ -9,7 +9,9 @@ import com.example.chessapp.storage.model.Place;
 import com.example.chessapp.storage.model.Puzzle;
 
 
-
+/**
+ * Class to get and read data from person table
+ */
 public class PersonTable extends DBResourceManager<Person> {
 
 

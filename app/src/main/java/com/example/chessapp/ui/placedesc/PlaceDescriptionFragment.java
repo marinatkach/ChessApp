@@ -37,6 +37,7 @@ public class PlaceDescriptionFragment extends Fragment {
 
         Place place = Objects.requireNonNull(Application.placeTable.get(placeId));
 
+        // find puzzles of selected place only
         List<Puzzle> puzzles = Application.puzzlesTable.all().stream()
                 .filter(it -> it.clubName != null)
                 .filter(it -> it.clubName.equals(place.clubName))

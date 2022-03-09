@@ -1,6 +1,5 @@
 package com.example.chessapp.ui.adaptes;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +13,10 @@ import com.example.chessapp.storage.model.Puzzle;
 
 import java.util.List;
 
+
+/**
+ * Contains Views from game card
+ */
 public class GameViewHolder extends RecyclerView.ViewHolder {
 
     TextView gameNameTextView;
@@ -61,6 +64,8 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
 
         Boolean isOpenValue = isOpenList.get(position -1);
 
+
+        // show solution if card was already opened
         if(isOpenValue) {
             gameAnswerTextView.setText(puzzle.solution);
             gameBntShowAnswer.setText(R.string.bnt_hide_solution);
@@ -70,6 +75,7 @@ public class GameViewHolder extends RecyclerView.ViewHolder {
             gameBntShowAnswer.setText(R.string.bnt_open_solution);
         }
 
+        // set click events
         gameBntShowAnswer.setOnClickListener((view) -> {
             if(gameAnswerTextView.getText().toString().startsWith("***")){
                 gameAnswerTextView.setText(puzzle.solution);

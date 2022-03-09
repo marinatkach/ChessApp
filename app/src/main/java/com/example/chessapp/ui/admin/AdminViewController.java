@@ -34,6 +34,7 @@ public class AdminViewController  {
         this.fragment = fragment;
         gpsUtils = new GpsUtils(fragment.getContext());
 
+        // checking permission
         if (ContextCompat.checkSelfPermission(fragment.getActivity(),  Manifest.permission.ACCESS_FINE_LOCATION) == PERMISSION_GRANTED) {
 
         } else {
@@ -53,16 +54,30 @@ public class AdminViewController  {
         printSuccess();
     }
 
+    /**
+     * set all clubs as visited
+     */
     public void setVisitedClubs(){
         setVisited(Application.placeTable.getPlacesByCategory(Place.CATEGORY_CLUB));
     }
+
+    /**
+     * set all outdoors as visited
+     */
     public void setVisitedOutdoors(){
         setVisited(Application.placeTable.getPlacesByCategory(Place.CATEGORY_OUTDOOR));
     }
+
+    /**
+     * set all cafes as visited
+     */
     public void setVisitedCafes(){
         setVisited(Application.placeTable.getPlacesByCategory(Place.CATEGORY_CAFE));
     }
 
+    /**
+     * set all places as unvisited
+     */
     public void setAllPlacesAsUnvisited(){
         for (Place place : Application.placeTable.all()) {
             place.isVisited = false;
@@ -72,17 +87,22 @@ public class AdminViewController  {
     }
 
 
+    /**
+     * set all place as visited by radius
+     */
     public void setVisitedByRadius(String inputText){
 
         String text = inputText.trim();
-        boolean isKm = true;
+        boolean isKm = true; // if false -> input in meters else km
 
+        // if empty input -> error
         if(text.equals("")){
             printMessageToast("Please Enter Radius!");
             return;
         }
 
 
+        // if input contains km -> replace km
         if(text.contains("km")){
             text = text.replace("km", "").trim();
         }
@@ -91,6 +111,7 @@ public class AdminViewController  {
             isKm = false;
         }
 
+        // 1,235 cannot be casted to number, only 1.234
         text = text.replace(",", ".");
 
         Double radius = null;
@@ -110,6 +131,7 @@ public class AdminViewController  {
         }
 
 
+        // get location and set distance
         Location location = gpsUtils.getLastKnowLocation();
         if(location == null) {
             int duration = Toast.LENGTH_SHORT;
@@ -122,11 +144,12 @@ public class AdminViewController  {
             Float distance = placeFloatPair.second;
             if(distance < meters){
                 place.isVisited = true;
-                Application.placeTable.update(place);
+                Application.placeTable.update(place); // update place state in DB
             }
         }
-        printSuccess();
+        printSuccess(); // print success message
     }
+
 
     private void printMessageToast(String text){
         int duration = Toast.LENGTH_SHORT;
@@ -145,12 +168,19 @@ public class AdminViewController  {
     }
 
 
-
+    /**
+     * logout
+     */
     public void logout(){
         userState.hasAccess = false;
         Application.stateTable.update(userState);
     }
 
+    /**
+     * get admin access
+     * @param password
+     * @return
+     */
     public boolean getAdminAccess(String password){
         if(Application.getCurrentUserState().accessPassword.equals(password)){
             userState.hasAccess = true;

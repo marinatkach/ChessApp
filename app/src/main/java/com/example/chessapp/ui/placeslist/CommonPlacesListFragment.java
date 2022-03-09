@@ -8,21 +8,21 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chessapp.Application;
-import com.example.chessapp.R;
 import com.example.chessapp.databinding.FragmentEmptyRecycleViewBinding;
 import com.example.chessapp.helpers.GpsUtils;
 import com.example.chessapp.storage.model.Place;
+import com.example.chessapp.ui.adaptes.PlaceCardAdapter;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Common fragment to draw a list of places (clubs, cafes, outdoors)
+ */
 public class CommonPlacesListFragment extends Fragment {
 
     private FragmentEmptyRecycleViewBinding binding;
@@ -30,6 +30,11 @@ public class CommonPlacesListFragment extends Fragment {
     private final String category;
     private final int navigationAction;
 
+    /**
+     *
+     * @param category type of place to draw
+     * @param navigationAction nav action if place was clicked
+     */
     public CommonPlacesListFragment(String category, int navigationAction) {
         this.category = category;
         this.navigationAction = navigationAction;
@@ -42,7 +47,6 @@ public class CommonPlacesListFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        PlacesListViewModel homeViewModel =  new ViewModelProvider(this).get(PlacesListViewModel.class);
 
         binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -55,10 +59,10 @@ public class CommonPlacesListFragment extends Fragment {
                 .filter(place -> place.category.equals(category))
                 .collect(Collectors.toList());
 
+        // get distances to all places from places List
         List<Pair<Place, Float>> placeDistances = utils.getDistances(placeList);
-        System.out.println("category: '" +   category + "'");
-        System.out.println(Arrays.toString(placeDistances.toArray()));
 
+        // if gps enabled -> sort places by distance
         if(!placeDistances.isEmpty() && placeDistances.get(0).second != null){
             placeDistances = placeDistances.stream()
                     .sorted((a,b) -> Float.compare(a.second, b.second))

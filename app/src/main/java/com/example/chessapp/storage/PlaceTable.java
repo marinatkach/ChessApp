@@ -9,6 +9,9 @@ import com.example.chessapp.storage.model.Place;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Class to get and read data from place table
+ */
 public class PlaceTable extends DBResourceManager<Place> {
 
 

@@ -15,10 +15,13 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.infowindow.MarkerInfoWindow;
 
+/**
+ * describes popup window in a map
+ */
 public class MapInfoWindow extends MarkerInfoWindow {
 
 
-    private Place place;
+    private Place place; // place information
 
     public MapInfoWindow(int layoutResId, MapView mapView, Place place) {
         super(layoutResId, mapView);
@@ -26,6 +29,10 @@ public class MapInfoWindow extends MarkerInfoWindow {
     }
 
 
+    /**
+     * set context when windows are shown
+     * @param arg0
+     */
     @Override
     public void onOpen(Object arg0) {
 

@@ -5,15 +5,23 @@ import android.widget.ImageView;
 
 import com.example.chessapp.R;
 
+/**
+ * Help functions
+ */
 public class AppHelpers {
 
-
+    /**
+     * set image to imageView from resource id or set defaut image if resource not found
+     * @param image
+     * @param resourceId
+     */
     public static void setImageOrDefault(ImageView image, String resourceId){
        setImageOrDefault(image, resourceId, "com.example.chessapp");
     }
 
 
-    public static void setImageOrDefault(ImageView image, String resourceId, String packageName ){
+
+    private static void setImageOrDefault(ImageView image, String resourceId, String packageName ){
 
         String resourceName = resourceId;
         if(resourceName.contains(".")){
@@ -31,10 +39,21 @@ public class AppHelpers {
 
     }
 
+    /**
+     * replace strings characted with a '*'
+     * @param sourceString
+     * @return
+     */
     public static String hideString(String sourceString){
        return hideString(sourceString.length());
     }
 
+
+    /**
+     * get string with a '*'
+     * @param cnt number of '*'
+     * @return
+     */
     public static String hideString(int cnt){
         StringBuilder res= new StringBuilder();
         for (int i = 0; i < cnt; i++) {
@@ -43,7 +62,4 @@ public class AppHelpers {
         return res.toString();
     }
 
-    public static String createPlayerText(String player1, String player2, int year){
-        return String.format("%s - %s, %s", player1, player2, year);
-    }
 }

@@ -23,8 +23,19 @@ public abstract class DBResourceManager<T extends DBEntry> extends SQLiteOpenHel
     };
 
 
-    protected abstract T createDataFromCursor(Cursor cursor); // to get data from db
-    protected abstract ContentValues createContextValuesFromObj(T obj); // to save data to db
+    /**
+     * to get data from db
+     * @param cursor
+     * @return
+     */
+    protected abstract T createDataFromCursor(Cursor cursor);
+
+    /**
+     *  to save data to db
+     * @param obj
+     * @return
+     */
+    protected abstract ContentValues createContextValuesFromObj(T obj);
 
     public String getTableName() {
         return tableName;

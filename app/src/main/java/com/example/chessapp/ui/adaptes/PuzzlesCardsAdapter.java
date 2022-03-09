@@ -17,11 +17,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ *  describe adaptor for game cards view , used in bonus and puzzles lists
+ */
 public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     protected List<Puzzle> puzzles;
     protected List<Boolean> isOpen = new ArrayList<>();
-    private int infoTextId;
+    private final int infoTextId; // id of text to print on ColInfoViewHolder
     private boolean printSuccessMessage = false;
 
     public PuzzlesCardsAdapter( List<Puzzle> puzzles, int infoTextId, boolean printSuccessMessage) {
@@ -29,7 +32,6 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.infoTextId = infoTextId;
         this.printSuccessMessage = printSuccessMessage;
         puzzles.forEach(i -> isOpen.add(false));
-//        setHasStableIds(true);
     }
 
     @Override
@@ -109,6 +111,9 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
+    /**
+     * card with a simple text
+     */
     public class InfoViewHolder extends RecyclerView.ViewHolder {
 
         public TextView infoNameTextView;
@@ -119,6 +124,9 @@ public class PuzzlesCardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
+    /**
+     * Card with a table text
+     */
     public class ColInfoViewHolder extends RecyclerView.ViewHolder {
 
         public ColInfoViewHolder(View itemView) {

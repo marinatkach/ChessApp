@@ -1,22 +1,15 @@
 package com.example.chessapp.ui.gps;
 
-import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
-
-import android.Manifest;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.chessapp.R;
 import com.example.chessapp.databinding.FragmentGpsBinding;
-
-import org.osmdroid.config.Configuration;
 
 public class GpsFragment extends Fragment {
 
@@ -37,7 +30,6 @@ public class GpsFragment extends Fragment {
             controller.checkAndRequestPermission();
         }
 
-//        makeRequest();
         binding.gpsBtnOnOff.setOnClickListener(t -> {
             if(controller.isGpsEnabled()){
                 controller.disableGps(this);
@@ -58,8 +50,10 @@ public class GpsFragment extends Fragment {
     }
 
 
-
-
+    /**
+     * update test of button
+     * @param reverse
+     */
     public void updateBtnText(boolean reverse){
         boolean isEnabled = controller.isGpsEnabled();
         if(reverse) isEnabled = !isEnabled;

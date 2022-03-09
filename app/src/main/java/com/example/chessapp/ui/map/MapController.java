@@ -50,12 +50,17 @@ public class MapController {
     private final int DISTANCE_METERS = Application.DISTANCE_METERS;
     private final int DISTANCE_TO_ADD_TO_VISITED_METES = Application.DISTANCE_TO_ADD_TO_VISITED_METES;
     private final Button button;
-    // placeName = marker
     private Map<Integer, Marker> markers = new HashMap<>();
     private boolean isLastPositionWasDefined = false;
     private Location lastCurrentLocation = null;
 
 
+    /**
+     * init map
+     * @param mapFragment
+     * @param mapView
+     * @param button
+     */
     @SuppressLint("MissingPermission")
     public MapController(MapFragment mapFragment, MapView mapView, Button button){
         this.mapView = mapView;
@@ -64,25 +69,23 @@ public class MapController {
         this.button = button;
 
 
-        this.permissionCheck();
+        this.permissionCheck(); // check permission
 
-        mapView.setBuiltInZoomControls(true);
-        mapView.setMultiTouchControls(true);
-        mapView.getController().setZoom(12.0);
+        mapView.setBuiltInZoomControls(true); // set zoom in buttons
+        mapView.setMultiTouchControls(true); // set multitouchControls for zooming
+        mapView.getController().setZoom(12.0); // set init zoom
         mapView.setTileSource(TileSourceFactory.MAPNIK);
-        addPointsOnMap();
-       // moveToCurrentLocation();
-        //moveToMunchen();
-
-        drawCurrentLocationIcon();
+        addPointsOnMap(); // add points on map
+        drawCurrentLocationIcon(); // draw icons to map
 
         LocationManager locationManager = (LocationManager) mapFragment.getActivity().getSystemService(Context.LOCATION_SERVICE);
         try {
-//            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 10, this::updatePlacesStateByCurrentLocation);
+
+            // set listener for updating current location location
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 50, new LocationListener() {
                 @Override
                 public void onLocationChanged(@NonNull Location location) {
-                   updatePlacesStateByCurrentLocation(location);
+                   updatePlacesStateByCurrentLocation(location); // update icons and markers state by location
                 }
 
                 @Override
@@ -118,17 +121,23 @@ public class MapController {
         if (ContextCompat.checkSelfPermission(mapFragment.getActivity(),  Manifest.permission.ACCESS_FINE_LOCATION) == PERMISSION_GRANTED) {
 
         } else {
-          //  ActivityCompat.requestPermissions( mapFragment.getActivity(),  new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1 );
         }
 
         Configuration.getInstance().load(mapFragment.getContext(), PreferenceManager.getDefaultSharedPreferences(mapFragment.getContext()));
 
     }
 
+    /**
+     * move camera to location
+     * @param location
+     */
     private void moveToLocation(Location location){
         mapView.getController().animateTo(new GeoPoint(location.getLatitude(), location.getLongitude()));
     }
 
+    /**
+     * move camera to current location
+     */
     public void moveToCurrentLocation(){
         Location location = new GpsUtils(context).getLastKnowLocation();
         if(location == null) return;
@@ -138,6 +147,7 @@ public class MapController {
     }
 
 
+    // move canera to munchen
     public void moveToMunchen(){
         GeoPoint m = new GeoPoint(48.12014245471684, 11.57697293298894);
         mapView.getController().setCenter(m);
@@ -153,6 +163,10 @@ public class MapController {
     }
 
 
+    /**
+     *  enable btn if near is a place
+     * @param currentLocation
+     */
     public void updateBtnState(Location currentLocation){
         if(currentLocation == null) {
             button.setEnabled(false);
@@ -172,6 +186,10 @@ public class MapController {
         button.setEnabled(false);
     }
 
+    /**
+     * updated states by location changing
+     * @param currentLocation
+     */
     public void updatePlacesStateByCurrentLocation(Location currentLocation){
         Log.i("Map", "updatePlacesStateByCurrentLocation(" + currentLocation.toString() + ")");
         lastCurrentLocation = currentLocation;
@@ -186,7 +204,13 @@ public class MapController {
     }
 
 
-    public Drawable getIconFromResource(Place place, Location currentLocation) {
+    /**
+     * return Drawable for place by current location
+     * @param place
+     * @param currentLocation
+     * @return
+     */
+    private Drawable getIconFromResource(Place place, Location currentLocation) {
 
         if(currentLocation == null || place.isVisited) return getIconFromResource(place);
 
@@ -215,7 +239,12 @@ public class MapController {
         return getIconFromResource(place);
     }
 
-        public Drawable getIconFromResource(Place place){
+    /**
+     * return Drawable for place
+     * @param place
+     * @return
+     */
+    private Drawable getIconFromResource(Place place){
         Drawable cafeBlack = AppCompatResources.getDrawable(context, R.drawable.ic_cafe_black);
         Drawable cafeGold = AppCompatResources.getDrawable(context, R.drawable.ic_cafe_selected);
         Drawable clubBlack = AppCompatResources.getDrawable(context, R.drawable.ic_club_black);
@@ -246,27 +275,8 @@ public class MapController {
         return null;
     }
 
-    Drawable getIcon(Place place, Location location){
-        final int size = 64;
-
-        Drawable icon = getIconFromResource(place, location);
-        if( icon == null ) return null;
-
-        if(icon.getClass() == VectorDrawable.class) return icon;
-
-        Bitmap b = ((BitmapDrawable)icon).getBitmap();
-
-        int height = icon.getIntrinsicHeight();
-        int width = icon.getIntrinsicWidth();
-
-        double coef = (double)width / height;
-
-        Bitmap newBitmap =  Bitmap.createScaledBitmap(b, (int) (coef * size), size, false);
-
-        BitmapDrawable newBitmapD =  new BitmapDrawable(newBitmap);
-        newBitmapD.setHotspotBounds(-500, -500, 500, 500 );
-        newBitmapD.setHotspot(1000, 1000 );
-        return newBitmapD;
+   private Drawable getIcon(Place place, Location location){
+       return getIconFromResource(place, location);
     }
 
 
@@ -275,6 +285,11 @@ public class MapController {
         addPointsOnMap(null);
     }
 
+
+    /**
+     * Add points markers on map =)
+     * @param location
+     */
     public void addPointsOnMap(Location location){
         reloadPlaces();
         for (Place place : places) {
@@ -287,24 +302,29 @@ public class MapController {
 
             marker.setInfoWindow(new MapInfoWindow(R.layout.info_window, mapView, place));
 
-//            marker.showInfoWindow();
+
+            // set event if marker was clicked
             marker.setOnMarkerClickListener((a,b) -> {
-                if(marker.isInfoWindowOpen()){
+                if(marker.isInfoWindowOpen()){ // if has been opened -> close
                     marker.closeInfoWindow();
                     return true;
                 }
                 markers.values().forEach(OverlayWithIW::closeInfoWindow);
                 marker.showInfoWindow();
-                mapView.getController().animateTo(marker.getPosition());
+                mapView.getController().animateTo(marker.getPosition()); // move to clicked marker
                 return true;
             });
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
-            mapView.getOverlays().add(marker);
-            markers.put(place.id, marker);
+            mapView.getOverlays().add(marker); // add marker to map
+            markers.put(place.id, marker);  // add created marker to a list
         }
 
     }
 
+    /**
+     * update markes by current location
+     * @param location
+     */
     public void updatePointsStatesOnMap(Location location){
         for (Place place : places) {
             Marker marker = markers.get(place.id);
@@ -313,18 +333,21 @@ public class MapController {
     }
 
 
+    /**
+     * Draw Arrow on map
+     */
     void drawCurrentLocationIcon(){
         MyLocationNewOverlay myLocationNewOverlay
                 = new MyLocationNewOverlay(new GpsMyLocationProvider(mapView.getContext()),mapView);
         myLocationNewOverlay.enableMyLocation();
-
         myLocationNewOverlay.enableMyLocation();
-      //  myLocationNewOverlay.enableFollowLocation();
         myLocationNewOverlay.setDrawAccuracyEnabled(true);
-
         mapView.getOverlays().add(myLocationNewOverlay);
     }
 
+    /**
+     * Add to visited button event
+     */
     void onBntClicked(){
         Location currentLocation = new GpsUtils(context).getLastKnowLocation();
         if(currentLocation == null) return;
@@ -335,7 +358,7 @@ public class MapController {
 
             if(placeLocation.distanceTo(currentLocation) <= DISTANCE_TO_ADD_TO_VISITED_METES){
                 place.isVisited = true;
-                Application.placeTable.update(place);
+                Application.placeTable.update(place); // change state and save(update) in db
             }
             updatePointsStatesOnMap(currentLocation);
         }

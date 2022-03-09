@@ -24,7 +24,6 @@ public class PuzzlesListFragment extends Fragment {
     private FragmentEmptyRecycleViewBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        FragmentPuzzlesBinding homeViewModel =  new ViewModelProvider(this).get(PlacesListViewModel.class);
 
         binding = FragmentEmptyRecycleViewBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

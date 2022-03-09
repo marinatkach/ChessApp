@@ -24,6 +24,10 @@ import com.example.chessapp.storage.model.Puzzle;
 
 import java.util.List;
 
+
+/**
+ * Adapter for the persons cards
+ */
 public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Person> persons;
@@ -101,17 +105,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
 
+    /**
+     * Contains views of title (first) person`s card
+     */
     public class PersonCardHeadViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
         public TextView headTitle;
         public TextView headBody;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public PersonCardHeadViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
 
             headTitle = (TextView) itemView.findViewById(R.id.historyHeadTitleText);
@@ -121,20 +122,18 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
 
-
+    /**
+     * Contains views of person`s card
+     */
     public class PersonCardViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+
         public TextView personNameTitleText;
         public TextView personInfoText;
         public ImageView personImage;
         public TextView personCitate;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
+
         public PersonCardViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
 
             personNameTitleText = (TextView) itemView.findViewById(R.id.personNameTitleText);

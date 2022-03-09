@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * describe adaptor for place info card
+ */
 public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Place place;
@@ -30,6 +33,7 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     public PlaceInfoCardAdapter(Place place,  List<Puzzle> puzzles) {
         this.place = place;
         this.puzzles = puzzles;
+        puzzles.forEach(i -> isOpen.add(false));
     }
 
     @Override
@@ -80,6 +84,9 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         clubNameDescriptionTextView.setText(place.clubName);
         cardDescriptionLink.setText(place.link);
+
+
+        // Viw.GONE -> remove a text view if text not exists
 
         if(place.category.equals(Place.CATEGORY_CLUB) && !place.labels.equals("")){
             membersDescriptionInfo.setText(place.labels.replace("\n", ", "));
@@ -187,9 +194,11 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
 
+    /**
+     * Contains all views of a Place info card
+     */
     public class PlaceInfoViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+
         public TextView clubNameDescriptionTextView;
         public TextView cardDescriptionLink;
         public TextView placeInfoText;
@@ -233,16 +242,12 @@ public class PlaceInfoCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             else if(type == 3){
                 return new TextView[]{membersGrad1 ,membersGrad2, membersGrad3, membersGrad4, membersGrad5};
             }
-            throw new IllegalArgumentException("unknonm input type " + type);
+            throw new IllegalArgumentException("unknown input type " + type);
 
         }
 
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public PlaceInfoViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
 
            clubNameDescriptionTextView = (TextView) itemView.findViewById(R.id.clubNameDescriptionTextView);

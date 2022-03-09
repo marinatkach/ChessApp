@@ -4,6 +4,8 @@ import com.example.chessapp.storage.model.DBEntry;
 
 import java.util.List;
 
+
+
 public interface ResourceManager<T extends DBEntry> {
     void push(T obj); // add new obj
     T get(int key); // get object by id
