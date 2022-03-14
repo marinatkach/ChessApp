@@ -65,8 +65,8 @@
     <string name="history_emanuel1"><b>Emanuel Lasker</b> (1868–1941), World Chess Champion 1894–1921, German Empire</string>
     <string name="history_emanuel2">“Without mistakes, there can be no brilliant victories”</string>
 
-    <string name="text_home_up">Hello!\nYou are welcomed by the app\n"Chess Places GO"</string>
-    <string name="text_home_center">The app will show you all the chess places in Munich and its surroundings (clubs, cafes, outdoor places). The app will help you find a chess club that suits your level of play. You can also enjoy solving chess problems from the best games of Munich chess players! Visit chess places and unlock the bonus!</string>
+    <string name="text_home_up">Hello!\nYou are welcomed by the app\n"Chess Places Go"</string>
+    <string name="text_home_center">The app will show you all the chess places in Munich and its surroundings (clubs, cafes, outdoor places). The app will help you find a chess club that suits your level of play. You can also enjoy solving chess tasks from the best games of Munich chess players! Visit chess places and unlock the bonus!</string>
     <string name="text_home_bottom">Designed by Irina Krivoborodova in 2022</string>
     <string name="wrong_password">Wrong Password</string>
 

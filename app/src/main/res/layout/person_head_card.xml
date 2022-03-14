@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="16dp"
             android:textSize="23sp"
             android:gravity="center"
             android:text="@string/history_top"
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:justificationMode="inter_word"
             android:textColor="@color/black"
+            android:textSize="16sp"
             android:autoLink="web"
             android:text="@string/history_body"
             app:layout_constraintBottom_toTopOf="@+id/imageView3"
@@ -49,7 +50,7 @@
             android:id="@+id/historyHeadCitateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="@string/history_head_citate" />
 
@@ -59,8 +60,8 @@
             android:layout_height="wrap_content"
             android:text="@string/person_head_title_down"
             android:textSize="19sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
 
             android:gravity="center"
             android:textColor="@color/black"

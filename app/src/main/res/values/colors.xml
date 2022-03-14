@@ -11,12 +11,11 @@
     <color name="admin_btn_color">#099C0C</color>
     <color name="normal_icon">#067da8</color>
     <color name="visited_icon">#B2560D</color>
-    <color name="near_icon">#8e381a</color>
+    <color name="near_icon">#d7191c</color>
 
     <color name="distance_near">#186321</color>
     <color name="distance_middle">#74A12E</color>
     <color name="distance_far">#BAD038</color>
     <color name="distance_unknown">#FFFF42</color>
-
 
 </resources>

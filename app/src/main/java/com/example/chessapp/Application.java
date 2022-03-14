@@ -30,7 +30,7 @@ public class Application {
     public static PuzzlesTable puzzlesTable = null;
     public static UserStateTable stateTable = null;
     public static PersonTable personTable = null;
-    public static final String DB_NAME = "db2206"; // name of db
+    public static final String DB_NAME = "db2207"; // name of db
 
     public static final int DISTANCE_METERS = 1000; // distance to change color of icon in a map
     public static final int DISTANCE_TO_ADD_TO_VISITED_METES = 100; // distance to place to mark it as visited

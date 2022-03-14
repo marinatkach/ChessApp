@@ -77,6 +77,7 @@ public class MapController {
         mapView.setTileSource(TileSourceFactory.MAPNIK);
         addPointsOnMap(); // add points on map
         drawCurrentLocationIcon(); // draw icons to map
+        button.setEnabled(false);
 
         LocationManager locationManager = (LocationManager) mapFragment.getActivity().getSystemService(Context.LOCATION_SERVICE);
         try {
