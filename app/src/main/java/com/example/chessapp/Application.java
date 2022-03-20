@@ -35,7 +35,7 @@ public class Application {
     public static final int DISTANCE_METERS = 1000; // distance to change color of icon in a map
     public static final int DISTANCE_TO_ADD_TO_VISITED_METES = 100; // distance to place to mark it as visited
 
-    public static final int DISTANCE_TO_PLACE_NEAR_METERS = 200; // change color of distance textview to distance_near
+//    public static final int DISTANCE_TO_PLACE_NEAR_METERS = 200; // change color of distance textview to distance_near
     public static final int DISTANCE_TO_PLACE_MIDDLE_METERS = 700; // change color of distance textview to distance_middle
 
 

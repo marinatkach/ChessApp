@@ -77,9 +77,7 @@ public class PlaceCardAdapter extends RecyclerView.Adapter<PlaceCardAdapter.Plac
         placeDistance.setText(distanceStr);
 
         int color = R.color.distance_far;
-        if(distance <= Application.DISTANCE_TO_PLACE_NEAR_METERS){
-            color = R.color.distance_near;
-        }else if(distance <= Application.DISTANCE_TO_PLACE_MIDDLE_METERS){
+        if(distance <= Application.DISTANCE_TO_PLACE_MIDDLE_METERS){
             color = R.color.distance_near;
         }
         placeDistance.setBackgroundColor(holder.itemView.getResources().getColor(color));
